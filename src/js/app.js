@@ -6,10 +6,8 @@ $(() => {
   const  width = gameBoard.width() - box.width();
   const height = gameBoard.height() - box.height();
   const  d = {};
-  const  x = 30;
+  const  x = 10;
   const $balls = $('.ball');
-
-
 
 
 
@@ -26,11 +24,29 @@ $(() => {
     if (a === 38) return n < 0 ? 0 : n > height ? height : n;
   }
 
+  makeDiv();
+
+
+  function makeDiv() {
+    var  count = 1;
+
+    while (count < 20){
+      const numRand = Math.floor(Math.random() * 501);
+      const divsize = 100;
+      const posx = (Math.random() * ($('body').width() - divsize)).toFixed();
+      var posy = (Math.random() * ($('body').height() - divsize)).toFixed();
+      const $newdiv = $('<div class="ball ' + '"></div>').css({
+        'left': posx + 'px',
+        'top': posy + 'px'
+      });
+      $newdiv.appendTo('#gameBoard').clone().delay(2000).fadeIn(100);
+      count ++;
+    }
+  }
+  
   //movement using keys
   $(window).keydown(function(e) {
     d[e.which] = true;
-    // const ballPosition = ball.position()
-    // const boxPosition = box.position();
 
     const a = {
       x: box.position().left,
@@ -49,30 +65,15 @@ $(() => {
 
       console.log(isCollide(a, b), $(ball).attr('class'));
 
-      // if (isCollide(a, b)) {
-      //   $(ball).remove();
-      // }
+      if (isCollide(a, b)) {
+        $(ball).remove();
+      }
     });
-
 
     box.css({
       left: function(i,v) { return newLocation(v, 37, 39); },
       top: function(i,v) { return newLocation(v, 38, 40); }
     });
-
-    // var ballString = JSON.stringify(ballPosition);
-    // var boxString = JSON.stringify(boxPosition);
-
-    // const result = isCollide(a, b);
-    //
-    // if (result === true) {
-    //   box.addClass('boxgrow');
-    //   console.log('winner')
-    // } else {
-    //   console.log('not quite')
-    // }
-
-
 
   });
   $(window).keyup(function(e) {
@@ -90,10 +91,10 @@ $(() => {
 
   // USE COMMENTED OUT CODE FOR SMOOTHER MOVEMENT
   // repeats posting of CSS to show box movement
-//   setInterval(function() {
-//     box.css({
-//       left: function(i,v) { return newLocation(v, 37, 39); },
-//       top: function(i,v) { return newLocation(v, 38, 40); }
-//     });
-//   }, 20);
+  // setInterval(function() {
+  //   box.css({
+  //     left: function(i,v) { return newLocation(v, 37, 39); },
+  //     top: function(i,v) { return newLocation(v, 38, 40); }
+  //   });
+  // }, 20);
 });

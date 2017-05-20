@@ -22,20 +22,37 @@
     // transition: all 0.2s ease;
 }
 
+// .exploding{
+//       position:absolute;
+//       width:10px; height:10px;
+//       border-radius: 100px;
+//       background-color: hotpink;
+// }
 
 
 .ball {
     position:absolute;
-
-    width:20px; height:20px;
-    // border-radius: 100px;
+    width:10px; height:10px;
+    border-radius: 100px;
     background-color: hotpink;
     &.one {
-      top:150px;
-      left:150px;
+      top:190px;
+      left:190px;
+      background-color: blue;
     }
     &.two {
       top:170px;
       left:170px;
+      background-color: blue;
+    }
+    &.three {
+      top:100px;
+      left:170px;
+      background-color: blue;
+    }
+    &.four {
+      top:200px;
+      left:200px;
+      background-color: green;
     }
 }
