@@ -6,10 +6,10 @@ $(() => {
   const  boxP1 = $('.boxP1');
   const  boxP2 = $('.boxP2');
   const  width = gameBoard.width() - box.width();
-  const height = gameBoard.height() - box.height();
+  const  height = gameBoard.height() - box.height();
   const  d = {};
-  const  x = 10;
-  const $balls = $('.ball');
+  const  x = 20;
+
 
 
 
@@ -30,17 +30,19 @@ $(() => {
     if (a === 38) return n < 0 ? 0 : n > height ? height : n;
   }
 
-// make div works but cannot acsess divs when made to "eat" them
+  // make div works but cannot acsess divs when made to "eat" them
+
   makeDiv();
+  const $balls = $('.ball');
 
   function makeDiv() {
     var  count = 1;
 
-    while (count < 20){
+    while (count < 3){
       const numRand = Math.floor(Math.random() * 501);
       const divsize = 100;
-      const posx = (Math.random() * ($('body').width() - divsize)).toFixed();
-      var posy = (Math.random() * ($('body').height() - divsize)).toFixed();
+      const posx = (Math.random() * ($('#gameBoard').width() - divsize)).toFixed();
+      var posy = (Math.random() * ($('#gameBoard').height() - divsize)).toFixed();
       const $newdiv = $('<div class="ball ' + '"></div>').css({
         'left': posx + 'px',
         'top': posy + 'px'
@@ -50,16 +52,24 @@ $(() => {
     }
   }
 
-// both boxes move but box 2 wont eat anything and box1 now eats everything on X axsis
+  // both boxes move but box 2 wont eat anything and box1 now eats everything on X axsis
+
   //movement using keys
   $(window).keydown(function(e) {
     d[e.which] = true;
 
     const a = {
-      x: boxP2.position().left,
+      x: boxP1.position().left,
       y: boxP1.position().top,
       width: boxP1.width(),
       height: boxP1.height()
+    };
+
+    const c = {
+      x: boxP2.position().left,
+      y: boxP2.position().top,
+      width: boxP2.width(),
+      height: boxP2.height()
     };
 
     $balls.each((index, ball) => {
@@ -70,7 +80,7 @@ $(() => {
         height: $(ball).height()
       };
 
-      function isCollide(a, b) {
+      function isCollideP1(a, b) {
         return !(
           ((a.y + a.height) < (b.y)) ||
           (a.y > (b.y + b.height)) ||
@@ -79,9 +89,29 @@ $(() => {
         );
       }
 
-      if (isCollide(a, b)) {
+      function isCollideP2(c, b) {
+        return !(
+          ((c.y + c.height) < (b.y)) ||
+          (c.y > (b.y + b.height)) ||
+          ((c.x + c.width) < b.x) ||
+          (c.x > (b.x + b.width))
+        );
+      }
+
+      if (isCollideP1(a, b)) {
+        $('#p1Counter').html(function(i, val) {
+          return +val+1;
+        });
         $(ball).remove();
       }
+      if (isCollideP2(c, b)) {
+        $('#p2Counter').html(function(i, val) {
+          return +val+1;
+        });
+        $(ball).remove();
+      }
+    
+
     });
 
     // box movement controlls
@@ -100,8 +130,8 @@ $(() => {
 
 
 
-  // USE COMMENTED OUT CODE FOR SMOOTHER MOVEMENT
-  // repeats posting of CSS to show box movement
+  // // USE COMMENTED OUT CODE FOR SMOOTHER MOVEMENT
+  // // repeats posting of CSS to show box movement
   // setInterval(function() {
   //   box.css({
   //     left: function(i,v) { return newLocation(v, 37, 39); },

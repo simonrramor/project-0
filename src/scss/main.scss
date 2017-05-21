@@ -1,66 +1,60 @@
 #gameBoard {
-    position:relative;
-    width:%;
-    height:90vh;
-    border:2px solid red;
-    margin:0 auto;
-    margin: 20px;
+  position:relative;
+  width:800px;
+  height:80vh;
+  border:2px solid red;
+  display: inline-block;
+  margin: 0 20px;
 }
 
-.boxP1 {
+.title{
+  font-size: 50px;
+  font-family: monospace;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.Scoreboard  {
+  height:80vh;
+  width: 10%;
+  display: inline-block;
+  border:2px solid red;
+}
+
+#p1Counter{
+  display: table;
+  font-size: 90px;
+  margin: 20px;
+  font-family: monospace;
+}
+#p2Counter{
+  display: table;
+  font-size: 90px;
+  margin: 20px;
+  font-family: monospace;
+}
+
+  .boxP1 {
     position:absolute;
-    top:0px; left:620px;
+    top:0px; left:0px;
     width:20px; height:20px;
     background-color: dodgerblue;
     transition: all 0.2s ease;
-}
+  }
 
-.boxP2 {
-        position:absolute;
-        top:0px; left:600px;
-        width:20px; height:20px;
-        background-color: orange;
-        transition: all 0.2s ease;
-    }
-
-.boxgrow {
+  .boxP2 {
     position:absolute;
-    width:25px; height:25px;
-    background-color: dodgerblue;
-    // transition: all 0.2s ease;
-}
-
-// .exploding{
-//       position:absolute;
-//       width:10px; height:10px;
-//       border-radius: 100px;
-//       background-color: hotpink;
-// }
+    top:0px; left:780px;
+    width:20px; height:20px;
+    background-color: orange;
+    transition: all 0.2s ease;
+  }
 
 
-.ball {
+
+  .ball {
     position:absolute;
     width:10px; height:10px;
     border-radius: 100px;
     background-color: hotpink;
-    &.one {
-      top:190px;
-      left:190px;
-      background-color: blue;
-    }
-    &.two {
-      top:170px;
-      left:170px;
-      background-color: blue;
-    }
-    &.three {
-      top:100px;
-      left:170px;
-      background-color: blue;
-    }
-    &.four {
-      top:200px;
-      left:200px;
-      background-color: green;
-    }
-}
+  }
