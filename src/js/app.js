@@ -12,6 +12,7 @@ $(() => {
   const numOfGoodDots = 200;
   const numOfBadDots = 200;
   const numOfBigDots = 30;
+
   // v = orgininal value.
   // a,b = direction
   // d is object holding true or fase about key press
@@ -47,6 +48,7 @@ $(() => {
     }
   }
 
+//adds in the big green dots
   makeBigDiv();
   function makeBigDiv() {
     var  count = 1;
@@ -62,7 +64,7 @@ $(() => {
       count ++;
     }
   }
-
+// adds in the bad red dotts
   makeBadDiv();
   function makeBadDiv() {
     var  count = 1;
@@ -79,7 +81,9 @@ $(() => {
     }
   }
 
+// collide function to check for collision
 
+// check for p1 + blue dots
   function isCollideP1(a, b) {
     return !(
       ((a.y + a.height) < (b.y)) ||
@@ -88,7 +92,7 @@ $(() => {
       (a.x > (b.x + b.width))
     );
   }
-
+// check for p2 + blue dots
   function isCollideP2(c, b) {
     return !(
       ((c.y + c.height) < (b.y)) ||
@@ -97,7 +101,7 @@ $(() => {
       (c.x > (b.x + b.width))
     );
   }
-
+// check for p1 + red dots
   function isBadCollideP1(a, s) {
     return !(
       ((a.y + a.height) < (s.y)) ||
@@ -106,7 +110,7 @@ $(() => {
       (a.x > (s.x + s.width))
     );
   }
-
+// check for p2 + red dots
   function isBadCollideP2(c, s) {
     return !(
       ((c.y + c.height) < (s.y)) ||
@@ -115,7 +119,7 @@ $(() => {
       (c.x > (s.x + s.width))
     );
   }
-
+// check for p1 + green dots
   function isBigCollideP1(a, big) {
     return !(
       ((a.y + a.height) < (big.y)) ||
@@ -124,7 +128,7 @@ $(() => {
       (a.x > (big.x + big.width))
     );
   }
-
+// check for p2 + green dots
   function isBigCollideP2(c, big) {
     return !(
       ((c.y + c.height) < (big.y)) ||
@@ -220,8 +224,8 @@ $(() => {
           return +val+2;
         });
         $(bigball).remove();
-        p1score.push('ball' * 2);
-        console.log(p1score.length);
+        p1score.push('ball', 'ball2');
+
       }
 
       if (isBigCollideP2(c, big)) {
@@ -229,8 +233,7 @@ $(() => {
           return +val+2;
         });
         $(bigball).remove();
-        p2score.push('ball' * 2);
-        console.log(p2score.length);
+        p2score.push('ball', 'ball2');
       }
     });
 
@@ -268,7 +271,7 @@ $(() => {
     } else $('.showWinner').text('It\'s a draw');
   }
 
-  let timeLeft = 200000;
+  let timeLeft = 20;
   const elem = document.getElementById('countDownTimer');
   const timerId = setInterval(countdown, 1000);
   function countdown() {
