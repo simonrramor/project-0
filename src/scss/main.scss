@@ -3,17 +3,11 @@ body{
 }
 #gameBoard {
   position:relative;
-  width:800px;
+  width:1000px;
   height:80vh;
   border:2px solid red;
   display: inline-block;
   margin: 0 20px;
-}
-
-.chart{
-  height: 50px;
-  width: 50px;
-  background-color: hotpink;
 }
 
 .title{
@@ -24,20 +18,18 @@ body{
 }
 
 .Scoreboard  {
-  height:80vh;
   width: 190px;
   display: inline-block;
-  border:2px solid red;
-
-  &ball {
-    display: inline;
-    position:absolute;
-    width:20px; height:20px;
-    border-radius: 100px;
-    background-color: hotpink;
-  }
 }
 
+.p1score{
+  display: block;
+  margin-bottom: 53vh;
+}
+
+.p1score{
+  display: block;
+}
 #p1Counter{
   display: table;
   font-size: 90px;
@@ -53,7 +45,7 @@ body{
 
   .boxP1 {
     position:absolute;
-    top:0px; left:0px;
+    top:0px; left:980px;
     width:20px; height:20px;
     background-color: dodgerblue;
     transition: all 0.2s ease;
@@ -61,7 +53,7 @@ body{
 
   .boxP2 {
     position:absolute;
-    top:0px; left:780px;
+    top:77.9vh; left:980px;
     width:20px; height:20px;
     background-color: orange;
     transition: all 0.2s ease;
@@ -76,6 +68,12 @@ body{
     background-color: dodgerblue;
   }
 
+.bigBall{
+  position:absolute;
+  width:20px; height:20px;
+  border-radius: 100px;
+  background-color: green;
+}
   .badball {
     position:absolute;
     width:10px; height:10px;
@@ -83,9 +81,38 @@ body{
     background-color: red;
   }
 
-    .badball {
-      position:absolute;
-      width:10px; height:10px;
-      border-radius: 100px;
-      background-color: red;
-    }
+#countDownTimer{
+  padding-top: 20px;
+  height: 40px;
+  font-size: 20px;
+  font-family: monospace;
+  width: 100%;
+
+}
+
+#gameover{
+  display:none;
+}
+
+#gameOverDiv{
+  height: 500px;
+  background-color: red;
+  font-family: monospace;
+  &.noshow{
+    display: none;
+  }
+}
+
+.gameoverTitle{
+  color: white;
+  font-size: 50px;
+  margin: 50px auto;
+  font-family: monospace;
+}
+
+.showWinner{
+  color: white;
+  font-size: 50px;
+  margin: 50px auto;
+  font-family: monospace;
+}
