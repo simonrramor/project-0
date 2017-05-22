@@ -1,3 +1,6 @@
+body{
+  text-align: center;
+}
 #gameBoard {
   position:relative;
   width:800px;
@@ -5,6 +8,12 @@
   border:2px solid red;
   display: inline-block;
   margin: 0 20px;
+}
+
+.chart{
+  height: 50px;
+  width: 50px;
+  background-color: hotpink;
 }
 
 .title{
@@ -16,9 +25,17 @@
 
 .Scoreboard  {
   height:80vh;
-  width: 10%;
+  width: 190px;
   display: inline-block;
   border:2px solid red;
+
+  &ball {
+    display: inline;
+    position:absolute;
+    width:20px; height:20px;
+    border-radius: 100px;
+    background-color: hotpink;
+  }
 }
 
 #p1Counter{
@@ -56,5 +73,19 @@
     position:absolute;
     width:10px; height:10px;
     border-radius: 100px;
-    background-color: hotpink;
+    background-color: dodgerblue;
   }
+
+  .badball {
+    position:absolute;
+    width:10px; height:10px;
+    border-radius: 100px;
+    background-color: red;
+  }
+
+    .badball {
+      position:absolute;
+      width:10px; height:10px;
+      border-radius: 100px;
+      background-color: red;
+    }

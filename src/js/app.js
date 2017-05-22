@@ -1,17 +1,31 @@
 $(() => {
-  console.log('helllloooo');
 
   const gameBoard = $('#gameBoard');
-  const  box = $('.boxP1', 'box2');
   const  boxP1 = $('.boxP1');
   const  boxP2 = $('.boxP2');
-  const  width = gameBoard.width() - box.width();
-  const  height = gameBoard.height() - box.height();
+  const  width = gameBoard.width() - boxP1.width();
+  const  height = gameBoard.height() - boxP2.height();
   const  d = {};
-  const  x = 20;
+  const  x = 20 ;
+  const p1score = [];
+  const p2score = [];
+  const numOfGoodDots = 7;
+  const numOfBadDots = 7;
 
 
 
+  //checking for winnner function
+  function checkWinner(p1score, p2score) {
+    if (p1score.length + p2score.length === (numOfGoodDots - 1)){
+      if  (p1score.length > p2score.length) {
+        alert('P1 winner');
+      } else if (p1score.length < p2score.length) {
+        alert('P2 winner');
+      }
+    } else {
+      console.log('No winner yet');
+    }
+  }
 
   // v = orgininal value.
   // a,b = direction
@@ -19,6 +33,7 @@ $(() => {
   // parseInt turns px into Int ising 10 or something radix stuff
   // n = check for valid movement
   // x = pixal jump
+
   function newLocationP1(v,a,b) {
     const n = parseInt(v, 10) - (d[a] ? x : 0) + (d[b] ? x : 0);
     if (a === 65) return   n < 0 ? 0 : n > width ? width : n;
@@ -30,16 +45,14 @@ $(() => {
     if (a === 38) return n < 0 ? 0 : n > height ? height : n;
   }
 
-  // make div works but cannot acsess divs when made to "eat" them
-
+  // makes random amounts of div on the page
   makeDiv();
   const $balls = $('.ball');
 
   function makeDiv() {
     var  count = 1;
 
-    while (count < 3){
-      const numRand = Math.floor(Math.random() * 501);
+    while (count < numOfGoodDots){
       const divsize = 100;
       const posx = (Math.random() * ($('#gameBoard').width() - divsize)).toFixed();
       var posy = (Math.random() * ($('#gameBoard').height() - divsize)).toFixed();
@@ -52,7 +65,28 @@ $(() => {
     }
   }
 
-  // both boxes move but box 2 wont eat anything and box1 now eats everything on X axsis
+  makeBadDiv();
+  const $badballs = $('.badball');
+
+  function makeBadDiv() {
+    var  count = 1;
+
+    while (count < numOfBadDots){
+      const divsize = 100;
+      const posx = (Math.random() * ($('#gameBoard').width() - divsize)).toFixed();
+      var posy = (Math.random() * ($('#gameBoard').height() - divsize)).toFixed();
+      const $newBaddiv = $('<div class="badball ' + '"></div>').css({
+        'left': posx + 'px',
+        'top': posy + 'px'
+      });
+      $newBaddiv.appendTo('#gameBoard').clone().delay(2000).fadeIn(100);
+      count ++;
+    }
+  }
+
+
+
+
 
   //movement using keys
   $(window).keydown(function(e) {
@@ -65,68 +99,130 @@ $(() => {
       height: boxP1.height()
     };
 
-    const c = {
-      x: boxP2.position().left,
-      y: boxP2.position().top,
-      width: boxP2.width(),
-      height: boxP2.height()
-    };
-
-    $balls.each((index, ball) => {
-      const b = {
-        x: $(ball).position().left,
-        y: $(ball).position().top,
-        width: $(ball).width(),
-        height: $(ball).height()
+    $badballs.each((index, badball) => {
+      const s = {
+        x: $(badball).position().left,
+        y: $(badball).position().top,
+        width: $(badball).width(),
+        height: $(badball).height()
       };
 
-      function isCollideP1(a, b) {
-        return !(
-          ((a.y + a.height) < (b.y)) ||
-          (a.y > (b.y + b.height)) ||
-          ((a.x + a.width) < b.x) ||
-          (a.x > (b.x + b.width))
-        );
-      }
+      const c = {
+        x: boxP2.position().left,
+        y: boxP2.position().top,
+        width: boxP2.width(),
+        height: boxP2.height()
+      };
 
-      function isCollideP2(c, b) {
-        return !(
-          ((c.y + c.height) < (b.y)) ||
-          (c.y > (b.y + b.height)) ||
-          ((c.x + c.width) < b.x) ||
-          (c.x > (b.x + b.width))
-        );
-      }
+      $balls.each((index, ball) => {
+        const b = {
+          x: $(ball).position().left,
+          y: $(ball).position().top,
+          width: $(ball).width(),
+          height: $(ball).height()
+        };
 
-      if (isCollideP1(a, b)) {
-        $('#p1Counter').html(function(i, val) {
-          return +val+1;
-        });
-        $(ball).remove();
-      }
-      if (isCollideP2(c, b)) {
-        $('#p2Counter').html(function(i, val) {
-          return +val+1;
-        });
-        $(ball).remove();
-      }
-    
+        function isCollideP1(a, b) {
+          return !(
+            ((a.y + a.height) < (b.y)) ||
+            (a.y > (b.y + b.height)) ||
+            ((a.x + a.width) < b.x) ||
+            (a.x > (b.x + b.width))
+          );
+        }
 
+        function isCollideP2(c, b) {
+          return !(
+            ((c.y + c.height) < (b.y)) ||
+            (c.y > (b.y + b.height)) ||
+            ((c.x + c.width) < b.x) ||
+            (c.x > (b.x + b.width))
+          );
+        }
+
+        function isBadCollideP1(a, s) {
+          return !(
+            ((a.y + a.height) < (s.y)) ||
+            (a.y > (s.y + s.height)) ||
+            ((a.x + a.width) < s.x) ||
+            (a.x > (s.x + s.width))
+          );
+        }
+
+        function isBadCollideP2(c, s) {
+          return !(
+            ((c.y + c.height) < (s.y)) ||
+            (c.y > (s.y + s.height)) ||
+            ((c.x + c.width) < s.x) ||
+            (c.x > (s.x + s.width))
+          );
+        }
+
+        if (isCollideP1(a, b)) {
+          $('#p1Counter').html(function(i, val) {
+            return +val+1;
+          });
+          $(ball).remove();
+          p1score.push('ball');
+          console.log('play 1 score is ' + p1score.length);
+          checkWinner(p1score, p2score);
+        }
+
+        if (isCollideP2(c, b)) {
+          $('#p2Counter').html(function(i, val) {
+            return +val+1;
+          });
+          $(ball).remove();
+          p2score.push('ball');
+          console.log('play 2 score is ' + p2score.length);
+          checkWinner(p1score, p2score);
+        }
+
+        if (isBadCollideP1(a, s)) {
+          $('#p1Counter').html(function(i, val) {
+            return -val-1;
+          });
+          $(badball).remove();
+          p1score.pop();
+          console.log('play 1 score is ' + p1score.length);
+        }
+
+        // if (isBadCollideP2(c, s)) {
+        //   $('#p2Counter').html(function(i, val) {
+        //     return -val-1;
+        //   });
+        //   $(badball).remove();
+        //   p2score.pop();
+        //   console.log('play 2 score is ' + p2score.length);
+        // }
+      });
     });
+
+
 
     // box movement controlls
     boxP1.css({
-      left: function(i,v) { return newLocationP1(v, 65, 68); },
-      top: function(i,v) { return newLocationP1(v, 87, 83); }
+      left: function(i,v) {
+        return newLocationP1(v, 65, 68);
+      },
+      top: function(i,v) {
+        return newLocationP1(v, 87, 83);
+      }
     });
     boxP2.css({
-      left: function(i,v) { return newLocationP2(v, 37, 39); },
-      top: function(i,v) { return newLocationP2(v, 38, 40); }
+      left: function(i,v) {
+        return newLocationP2(v, 37, 39);
+      },
+      top: function(i,v) {
+        return newLocationP2(v, 38, 40);
+      }
     });
   });
+
   $(window).keyup(function(e) {
     d[e.which] = false;
   });
+
 
 
 
@@ -138,4 +234,5 @@ $(() => {
   //     top: function(i,v) { return newLocation(v, 38, 40); }
   //   });
   // }, 20);
+
 });
