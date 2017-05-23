@@ -24,12 +24,16 @@
       </div>
 
       <div class="Scoreboard">
-        <div class="p1score">
-          <div id="p1Counter">0</div>
-        </div>
-        <div id="countDownTimer"></div>
-        <div class="p2score">
-          <div id="p2Counter">0</div>
+
+
+
+          <div class="p1score">
+            <div id="p1Counter">0</div>
+          </div>
+          <div id="countDownTimer"></div>
+          <div class="p2score">
+            <div id="p2Counter">0</div>
+        
         </div>
 
 
@@ -51,10 +55,17 @@
           <h1> WELCOME TO COLLECT STUFF</h1>
           <h2> A game where you have to collect stuff</h2>
         </div>
+        <p>Set time limit</p>
+        <div class="range-slider">
 
-        <input type="range" step="1000" value="60000" min="30000" max="200000">
+          <input class="range-slider__range" type="range" step="1000" value="60000" min="30000" max="200000">
 
-        <button id="start">START</button>
+          <span class="value">Your game will last 60 seconds</span>
+
+          <div class="startButton">
+            <button id="start">START</button>
+          </div>
+        </div>
       </div>
 
 

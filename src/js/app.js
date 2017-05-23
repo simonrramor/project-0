@@ -20,15 +20,22 @@ $(() => {
   const audioError = $('audio')[2];
   const audioGold = $('audio')[3];
   const goldenters = $('audio')[4];
+  let gameTime = 60000;
+
+  const rangeSlider = function(){
+    $('input[type=range]').eq(0).on('change', (e) => {
+      gameTime = $(e.target).val();
+      console.log('gametime is now ', gameTime);
+      $('.value').text('Your game will last ' + (gameTime / 1000) + ' seconds');
+    });
+  };
+
+  rangeSlider();
 
   // trying to get sliders to work
-  let gameTime = 60000; // in miliseconds
-  $('input[type=range]').eq(0).on('change', (e) => {
-    gameTime = $(e.target).val()  ;
-    console.log('gametime is now ', gameTime);
-  });
 
-//STARTS WHOLE GAME!!!
+
+  //STARTS WHOLE GAME!!!
   $('#start').click(function(){
     console.log('start clicked');
     $( '#welcomePage' ).hide();
