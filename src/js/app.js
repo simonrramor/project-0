@@ -13,17 +13,39 @@ $(() => {
   const numOfBadDots = 200;
   const numOfBigDots = 30;
   const numOfGoldDots = 2;
-  const gameTime = 2000000; // in miliseconds
+  // const gameTime = 30000; // in miliseconds
   let mute = false;
+  const audio = $('audio')[0];
+  const audioBig = $('audio')[1];
+  const audioError = $('audio')[2];
+  const audioGold = $('audio')[3];
+  const goldenters = $('audio')[4];
 
+
+
+  $('#start').click(function(){
+    console.log('start clicked');
+    $( '#welcomePage' ).hide();
+    $('.gameScreen').removeAttr('id', 'hidden');
+  });
+
+
+
+
+  // trying to get sliders to work
+  let gameTime = 30000; // in miliseconds
+  $('input[type=range]').eq(0).on('change', (e) => {
+    gameTime = $(e.target).val()  ;
+    console.log('gametime is now ', gameTime);
+  });
+
+
+  //Mute button toggle
   $('#mute-button').each(function() {
-
     $(this).data('original', $(this).html());
-
   }).on('click', function() {
     $(this).toggleClass('clicked').html(function(_, html) {
       var org = $(this).data('original');
-
       return html === org ? '<i class="fa fa-volume-off" aria-hidden="true"></i>' : org;
     });
   });
@@ -100,7 +122,7 @@ $(() => {
     }
   }
 
-  const goldenters = $('audio')[4];
+
   setTimeout(function () {
     makeGoldDiv();
 
@@ -219,7 +241,7 @@ $(() => {
       height: boxP2.height()
     };
 
-    const audioError = $('audio')[2];
+
     //Check for bad ball connect
     $('.badball').each((index, badball) => {
       const s = {
@@ -247,6 +269,7 @@ $(() => {
         if(!mute)audioError.play();
       }
     });
+
     //Check for ball connect
     $('.ball').each((index, ball) => {
       const b = {
@@ -256,7 +279,7 @@ $(() => {
         height: $(ball).height()
       };
 
-      const audio = $('audio')[0];
+
 
       if (isCollideP1(a, b)) {
         $('#p1Counter').html(function(i, val) {
@@ -279,7 +302,7 @@ $(() => {
       }
     });
 
-    const audioBig = $('audio')[1];
+
     //Check for big ball connect
     $('.bigBall').each((index, bigball) => {
       const big = {
@@ -309,7 +332,7 @@ $(() => {
       }
     });
 
-    const audioGold = $('audio')[3];
+
     //Check for GOLD ball connect
     $('.goldenball').each((index, goldenball) => {
       const gold = {
@@ -390,23 +413,5 @@ $(() => {
       timeLeft--;
     }
   }
-
-
-  $('#mute-button').on('click', function(){
-    $('audio').each(function(){
-      console.log('paused')
-      $(this).volume = 0.0;
-    });
-
-  });
-
-  $('#mute').click(function() {
-    if (elem.muted === false){
-      mutePage();
-    } else {
-      unMutePage();
-    }
-  });
-
 
 });

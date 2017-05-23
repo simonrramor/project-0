@@ -2,8 +2,8 @@ body{
   width: 100%;
   text-align: center;
   background-color: F4FDFC;
-  position: fixed;
-  overflow-x:auto;
+  // position: fixed;
+  // overflow-x:auto;
 }
 
 a{
@@ -25,7 +25,7 @@ a{
 }
 
 .Scoreboard  {
-  width: 80%;
+  width: 90%;
   display: flex;
   margin: 0 auto;
   overflow: hidden;
@@ -78,7 +78,7 @@ a{
 
 .bigBall{
   position:absolute;
-  width:20px; height:20px;
+  width:15px; height:15px;
   border-radius: 100px;
   background-color: green;
 }
@@ -112,6 +112,10 @@ box-shadow: 0px 0px 10px 1px gold;
 
 }
 
+#hidden{
+  // visibility: hidden;
+}
+
 #gameover{
   display:none;
 }
@@ -141,20 +145,22 @@ box-shadow: 0px 0px 10px 1px gold;
 
 
 #mute-button{
-  align-items: center;
-  background-color: aqua;
-  height: 50px;
-  width: 60px;
+  margin-top: 50px;
+  margin-left: 50px;
+  height: 40px;
+  width: 47px;
   border-radius: 100px;
-  border: none;
+  border: solid 2px lightgrey;
   font-size: 20px;
-  color: white;
+  background-color: white;
+  color: lightgrey;
   outline: none;
 }
 
 #mute-button:hover{
-
-  background-color: blue;
+  background-color: slategrey;
+color: white;
+border: solid 2px slategrey;
 
 }
 
