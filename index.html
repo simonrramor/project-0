@@ -9,12 +9,14 @@
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   <script src="public/js/app.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
   <link rel="stylesheet" href="public/css/main.css">
   <link rel="stylesheet" href="animate.css">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <body>
+  <main>
     <div class="gameScreen" id="hidden">
       <div id="gameBoard">
         <div class="boxP1"></div>
@@ -43,35 +45,35 @@
       </div>
 
 
-  <!-- Start Screen Stuff -->
-<div id="welcomePage">
-  <div class="header">
-    <h1> WELCOME TO COLLECT STUFF</h1>
-    <h2> A game where you have to collect stuff</h2>
-  </div>
+      <!-- Start Screen Stuff -->
+      <div id="welcomePage">
+        <div class="header">
+          <h1> WELCOME TO COLLECT STUFF</h1>
+          <h2> A game where you have to collect stuff</h2>
+        </div>
 
-  <input type="range" value="60000" min="30000" max="200000">
+        <input type="range" step="1000" value="60000" min="30000" max="200000">
 
-  <button id="start">START</button>
-</div>
-
-
+        <button id="start">START</button>
+      </div>
 
 
 
 
 
 
-  <!-- End Screen Stuff -->
-
-  <div class="noshow" id="gameOverDiv">
-    <div class="gameoverTitle">GAME OVER!</div>
-    <div class="showWinner"></div>
-    <a class="nav-link" href="index.html">START AGAIN</a>
-  </div>
 
 
+      <!-- End Screen Stuff -->
 
-    </body>
+      <div class="noshow" id="gameOverDiv">
+        <div class="gameoverTitle">GAME OVER!</div>
+        <div class="showWinner"></div>
+        <a class="nav-link" href="index.html">START AGAIN</a>
+      </div>
+
+
+
+    </main>
   </body>
   </html>
