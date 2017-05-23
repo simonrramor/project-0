@@ -13,8 +13,20 @@ $(() => {
   const numOfBadDots = 200;
   const numOfBigDots = 30;
   const numOfGoldDots = 2;
-  const gameTime = 20000; // in miliseconds
+  const gameTime = 2000000; // in miliseconds
   let mute = false;
+
+  $('#mute-button').each(function() {
+
+    $(this).data('original', $(this).html());
+
+  }).on('click', function() {
+    $(this).toggleClass('clicked').html(function(_, html) {
+      var org = $(this).data('original');
+
+      return html === org ? '<i class="fa fa-volume-off" aria-hidden="true"></i>' : org;
+    });
+  });
 
   $('#mute-button').on('click', () => {
     mute = !mute;
@@ -46,7 +58,7 @@ $(() => {
       const divsize = 20;
       const posx = (Math.random() * ($('#gameBoard').width() - divsize)).toFixed();
       var posy = (Math.random() * ($('#gameBoard').height() - divsize)).toFixed();
-      const $newdiv = $('<div class="ball ' + '"></div>').css({
+      const $newdiv = $('<div class="ball"</div>').css({
         'left': posx + 'px',
         'top': posy + 'px'
       });
@@ -387,33 +399,6 @@ $(() => {
     });
 
   });
-
-  // // Mute a singular HTML5 element
-  // function muteMe(elem) {
-  //   elem.muted = false;
-  //   elem.pause();
-  // }
-  //
-  // function unMuteMe(elem) {
-  //   elem.muted = true;
-  //   elem.play();
-  // }
-  //
-  // // Try to mute all audio elements on the page
-  // function mutePage() {
-  //   const audios = document.querySelectorAll('audio');
-  //   [].forEach.call(audios, function(audio) {
-  //     muteMe(audio);
-  //   });
-  // }
-  //
-  // function unMutePage() {
-  //   const audios = document.querySelectorAll('audio');
-  //   [].forEach.call(audios, function(audio) {
-  //     unMuteMe(audio);
-  //   });
-  // }
-
 
   $('#mute').click(function() {
     if (elem.muted === false){

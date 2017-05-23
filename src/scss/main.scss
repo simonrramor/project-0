@@ -138,3 +138,26 @@ box-shadow: 0px 0px 10px 1px gold;
   margin: 50px auto;
   font-family: monospace;
 }
+
+
+#mute-button{
+  align-items: center;
+  background-color: aqua;
+  height: 50px;
+  width: 60px;
+  border-radius: 100px;
+  border: none;
+  font-size: 20px;
+  color: white;
+  outline: none;
+}
+
+#mute-button:hover{
+
+  background-color: blue;
+
+}
+
+.clicked{
+  background-color: red;
+}
