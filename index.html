@@ -11,11 +11,14 @@
   <script src="public/js/app.js" charset="utf-8"></script>
   <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+  <link rel="stylesheet" href="public/css/reset.css">
   <link rel="stylesheet" href="public/css/main.css">
   <link rel="stylesheet" href="animate.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway+Dots|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
   <main>
     <div class="gameScreen" id="hidden">
       <div id="gameBoard">
@@ -27,13 +30,13 @@
 
 
 
-          <div class="p1score">
-            <div id="p1Counter">0</div>
-          </div>
-          <div id="countDownTimer"></div>
-          <div class="p2score">
-            <div id="p2Counter">0</div>
-        
+        <div class="p1score">
+          <div id="p1Counter">0</div>
+        </div>
+        <div id="countDownTimer"></div>
+        <div class="p2score">
+          <div id="p2Counter">0</div>
+
         </div>
 
 
@@ -47,25 +50,37 @@
           <audio src="sounds/goldenters.wav"> </audio>
         </div>
       </div>
-
+      <div class="instructions">
+        <div class="icon">
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+        </div>
+      </div>
 
       <!-- Start Screen Stuff -->
       <div id="welcomePage">
-        <div class="header">
-          <h1> WELCOME TO COLLECT STUFF</h1>
-          <h2> A game where you have to collect stuff</h2>
+
+        <div class="spinner">
+          <span class="ball-1"></span>
+          <span class="ball-2"></span>
+          <span class="ball-3"></span>
+          <span class="ball-4"></span>
+          <span class="ball-5"></span>
         </div>
-        <p>Set time limit</p>
+        <div class="header">
+          <h1> WELCOME TO <strong> COLLECT STUFF</strong>. WHERE THE AIM OF THE GAME IS TO COLLECT AS MUCH STUFF AS YOU CAN BEFORE THE TIME RUNS OUT. JUST MAKE SURE YOU DONT COLLECT THE WRONG STUFF.</h1>
+
+        </div>
+        <h1><strong>How long do you want to play for?</strong></h1>
         <div class="range-slider">
 
           <input class="range-slider__range" type="range" step="1000" value="60000" min="30000" max="200000">
 
-          <span class="value">Your game will last 60 seconds</span>
-
-          <div class="startButton">
-            <button id="start">START</button>
-          </div>
+        <h1><strong>  <span class="value">Your game will last 60 seconds</span></strong></h1>
         </div>
+          <div class="startButton">
+            <button class="hvr-underline-from-center" id="start">START</button>
+          </div>
+
       </div>
 
 
@@ -80,7 +95,7 @@
       <div class="noshow" id="gameOverDiv">
         <div class="gameoverTitle">GAME OVER!</div>
         <div class="showWinner"></div>
-        <a class="nav-link" href="index.html">START AGAIN</a>
+        <a class="nav-link" href="index.html">RETURN TO HOME SCREEN</a>
       </div>
 
 

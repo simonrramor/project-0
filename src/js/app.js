@@ -1,5 +1,6 @@
 $(() => {
 
+
   const gameBoard = $('#gameBoard');
   const  boxP1 = $('.boxP1');
   const  boxP2 = $('.boxP2');
@@ -422,4 +423,7 @@ $(() => {
       }
     }
   });
+
+
+
 });

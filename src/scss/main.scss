@@ -1,13 +1,50 @@
 body{
+  font-family: 'Roboto', sans-serif;
   width: 100%;
+  height: 100vh;
   text-align: center;
   background-color: F4FDFC;
   position: fixed;
   overflow-x:auto;
+  border: 10px solid black;
+  overflow: hidden;
+}
+.instructions{
+  position: relative;
+    top: -820px;
+    float: right;
+    font-size: 40px;
+    color: #000;
 }
 
-main {
-    position: relative;
+.icon:hover{
+  color: aqua;
+}
+
+.icon{
+  float: right;
+  margin: 20px 20px;
+}
+.header{
+  margin: 40px auto;
+  max-width: 600px;
+}
+strong{
+  font-weight: 600;
+}
+h1{
+  font-size: 30px;
+
+  font-weight: 300;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+h2{
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
 }
 
 a{
@@ -29,7 +66,7 @@ a{
 }
 
 #gameBoard {
-    z-index: 1;
+  z-index: 1;
   position:relative;
   width:90%;
   height:600px;
@@ -38,8 +75,51 @@ a{
   margin: 0 20px;
 }
 .startButton{
-  margin: 20px auto;
+  margin: 30px auto;
 }
+
+button{
+  margin: 0 auto;
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  padding: 10px 30px;
+  border: none;
+  cursor: cell;
+}
+
+/* Underline From Center */
+.hvr-underline-from-center {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden;
+}
+.hvr-underline-from-center:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background: black;
+  height: 4px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+  left: 0;
+  right: 0;
+}
+
 .Scoreboard  {
   width: 90%;
   display: flex;
@@ -72,7 +152,7 @@ a{
 
 .boxP1 {
   position:absolute;
-  top:580px; left:49%;
+  top:578px; left:49%;
   width:20px; height:20px;
   background-color: hotpink;
   transition: all 0.2s ease;
@@ -80,7 +160,7 @@ a{
 
 .boxP2 {
   position:absolute;
-  top:580px; left:51%;
+  top:578px; left:51%;
   width:20px; height:20px;
   background-color: orange;
   transition: all 0.2s ease;
@@ -114,8 +194,8 @@ a{
   border-radius: 100px;
   background-color: gold;
   -webkit-box-shadow: 0px 2px 10px 1px gold;
--moz-box-shadow: 0px 2px 10px 1px gold;
-box-shadow: 0px 0px 10px 1px gold;
+  -moz-box-shadow: 0px 2px 10px 1px gold;
+  box-shadow: 0px 0px 10px 1px gold;
 }
 
 // .scoreContent{
@@ -179,8 +259,8 @@ box-shadow: 0px 0px 10px 1px gold;
 
 #mute-button:hover{
   background-color: slategrey;
-color: white;
-border: solid 2px slategrey;
+  color: white;
+  border: solid 2px slategrey;
 
 }
 
@@ -200,7 +280,6 @@ input {
   background-size: 300px 5px;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
   outline: none;
   zoom: 130%;
   display: block;
@@ -208,23 +287,23 @@ input {
 }
 
 input::-webkit-slider-thumb {
- -webkit-appearance: none;
- width: 20px;
- height: 20px;
- background: #27ae60;
- position: relative;
- z-index: 3;
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #27ae60;
+  position: relative;
+  z-index: 3;
 }
 
 input::-webkit-slider-thumb:after {
- content: " ";
- width: 160px;
- height: 10px;
- position: absolute;
- z-index: 1;
- right: 20px;
- top: 5px;
- background: #2ecc71;
+  content: " ";
+  width: 160px;
+  height: 5px;
+  position: absolute;
+  z-index: 1;
+  right: 20px;
+  top: 5px;
+  background: #2ecc71;
 }
 
 
@@ -253,17 +332,17 @@ $range-width: 100% !default;
 
 $range-handle-color: $shade-10 !default;
 $range-handle-color-hover: $teal !default;
-$range-handle-size: 20px !default;
+$range-handle-size: 15px !default;
 
 $range-track-color: $shade-1 !default;
-$range-track-height: 10px !default;
+$range-track-height: 5px !default;
 
 $range-label-color: $shade-10 !default;
 $range-label-width: 60px !default;
 
 .value {
   display: inline-block;
-  margin: 30px auto;
+  margin: 0 auto;
 }
 
 
@@ -275,7 +354,7 @@ $range-label-width: 60px !default;
   background: $range-track-color;
   outline: none;
   padding: 0;
-  margin: 0;
+  margin: 30px auto;
 
   // Range Handle
   &::-webkit-slider-thumb {
@@ -331,11 +410,73 @@ $range-label-width: 60px !default;
 
 // Firefox Overrides
 ::-moz-range-track {
-    background: $range-track-color;
-    border: 0;
+  background: $range-track-color;
+  border: 0;
 }
 
 input::-moz-focus-inner,
 input::-moz-focus-outer {
   border: 0;
 }
+
+
+//dots animation on home screen
+$colors:
+//   red,
+//   dodgerblue,
+// green,
+// orange,
+//   hotpink,
+//   gold,
+//   #CDDC39,
+//   #FFEB3B;
+black,
+black,
+black,
+gold,
+black,
+black,
+black,
+black;
+
+.spinner {
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  z-index: 1;
+  height: 30px;
+  width: 30px;
+  transform: translate(-50%, -50%);
+}
+
+[class^="ball-"] {
+  position: absolute;
+  display: block;
+  left: 24px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  transition: all 0.5s;
+  animation: circleRotate 4s both infinite;
+  transform-origin: 0 100% 0;
+}
+
+@keyframes circleRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1440deg);
+  }
+}
+
+@for $i from 1 through 8 {
+  .ball-#{$i} {
+    z-index: -#{$i};
+    background-color: nth($colors, $i);
+    animation-timing-function: cubic-bezier(0.5, 0.3 * $i, 0.9, 0.9);
+  }
+}
+
+
+//box thing
