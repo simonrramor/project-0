@@ -12,6 +12,13 @@ $(() => {
   const numOfGoodDots = 200;
   const numOfBadDots = 200;
   const numOfBigDots = 30;
+  const numOfGoldDots = 2;
+  const gameTime = 20000; // in miliseconds
+  let mute = false;
+
+  $('#mute-button').on('click', () => {
+    mute = !mute;
+  });
 
   // v = orgininal value.
   // a,b = direction
@@ -48,7 +55,7 @@ $(() => {
     }
   }
 
-//adds in the big green dots
+  //adds in the big green dots
   makeBigDiv();
   function makeBigDiv() {
     var  count = 1;
@@ -64,7 +71,7 @@ $(() => {
       count ++;
     }
   }
-// adds in the bad red dotts
+  // adds in the bad red dotts
   makeBadDiv();
   function makeBadDiv() {
     var  count = 1;
@@ -81,9 +88,34 @@ $(() => {
     }
   }
 
-// collide function to check for collision
+  const goldenters = $('audio')[4];
+  setTimeout(function () {
+    makeGoldDiv();
 
-// check for p1 + blue dots
+  }, Math.floor(Math.random() * (gameTime - 10000)));
+
+  function makeGoldDiv() {
+    var  count = 1;
+    while (count < numOfGoldDots){
+      const divsize = 20;
+      const posx = (Math.random() * ($('#gameBoard').width() - divsize)).toFixed();
+      var posy = (Math.random() * ($('#gameBoard').height() - divsize)).toFixed();
+      const $newGoldDiv = $('<div class="goldenball"></div>').css({
+        'left': posx + 'px',
+        'top': posy + 'px'
+      });
+
+
+      $newGoldDiv.appendTo('#gameBoard').clone().delay(2000).fadeIn(100);
+      count ++;
+      goldenters.play();
+
+    }
+  }
+
+  // collide function to check for collision
+
+  // check for p1 + blue dots
   function isCollideP1(a, b) {
     return !(
       ((a.y + a.height) < (b.y)) ||
@@ -92,7 +124,7 @@ $(() => {
       (a.x > (b.x + b.width))
     );
   }
-// check for p2 + blue dots
+  // check for p2 + blue dots
   function isCollideP2(c, b) {
     return !(
       ((c.y + c.height) < (b.y)) ||
@@ -101,7 +133,8 @@ $(() => {
       (c.x > (b.x + b.width))
     );
   }
-// check for p1 + red dots
+
+  // check for p1 + red dots
   function isBadCollideP1(a, s) {
     return !(
       ((a.y + a.height) < (s.y)) ||
@@ -110,7 +143,7 @@ $(() => {
       (a.x > (s.x + s.width))
     );
   }
-// check for p2 + red dots
+  // check for p2 + red dots
   function isBadCollideP2(c, s) {
     return !(
       ((c.y + c.height) < (s.y)) ||
@@ -119,7 +152,7 @@ $(() => {
       (c.x > (s.x + s.width))
     );
   }
-// check for p1 + green dots
+  // check for p1 + green dots
   function isBigCollideP1(a, big) {
     return !(
       ((a.y + a.height) < (big.y)) ||
@@ -128,13 +161,31 @@ $(() => {
       (a.x > (big.x + big.width))
     );
   }
-// check for p2 + green dots
+  // check for p2 + green dots
   function isBigCollideP2(c, big) {
     return !(
       ((c.y + c.height) < (big.y)) ||
       (c.y > (big.y + big.height)) ||
       ((c.x + c.width) < big.x) ||
       (c.x > (big.x + big.width))
+    );
+  }
+  // check for p1 + green dots
+  function isGoldCollideP1(a, gold) {
+    return !(
+      ((a.y + a.height) < (gold.y)) ||
+      (a.y > (gold.y + gold.height)) ||
+      ((a.x + a.width) < gold.x) ||
+      (a.x > (gold.x + gold.width))
+    );
+  }
+  // check for p2 + GOLD dots
+  function isGoldCollideP2(c, gold) {
+    return !(
+      ((c.y + c.height) < (gold.y)) ||
+      (c.y > (gold.y + gold.height)) ||
+      ((c.x + c.width) < gold.x) ||
+      (c.x > (gold.x + gold.width))
     );
   }
 
@@ -156,7 +207,8 @@ $(() => {
       height: boxP2.height()
     };
 
-//Check for bad ball connect
+    const audioError = $('audio')[2];
+    //Check for bad ball connect
     $('.badball').each((index, badball) => {
       const s = {
         x: $(badball).position().left,
@@ -171,7 +223,7 @@ $(() => {
         });
         $(badball).remove();
         p1score.pop();
-        console.log(p1score.length);
+        if(!mute)audioError.play();
       }
 
       if (isBadCollideP2(c, s)) {
@@ -180,10 +232,10 @@ $(() => {
         });
         $(badball).remove();
         p2score.pop();
-        console.log(p2score.length);
+        if(!mute)audioError.play();
       }
     });
-//Check for ball connect
+    //Check for ball connect
     $('.ball').each((index, ball) => {
       const b = {
         x: $(ball).position().left,
@@ -192,13 +244,16 @@ $(() => {
         height: $(ball).height()
       };
 
+      const audio = $('audio')[0];
+
       if (isCollideP1(a, b)) {
         $('#p1Counter').html(function(i, val) {
           return +val+1;
         });
         $(ball).remove();
         p1score.push('ball');
-        console.log(p1score.length);
+        if(!mute)audio.play();
+
       }
 
       if (isCollideP2(c, b)) {
@@ -207,10 +262,13 @@ $(() => {
         });
         $(ball).remove();
         p2score.push('ball');
-        console.log(p2score.length);
+        if(!mute)audio.play();
+
       }
     });
-//Check for big ball connect
+
+    const audioBig = $('audio')[1];
+    //Check for big ball connect
     $('.bigBall').each((index, bigball) => {
       const big = {
         x: $(bigball).position().left,
@@ -225,6 +283,7 @@ $(() => {
         });
         $(bigball).remove();
         p1score.push('ball', 'ball2');
+        if(!mute)audioBig.play();
 
       }
 
@@ -234,6 +293,37 @@ $(() => {
         });
         $(bigball).remove();
         p2score.push('ball', 'ball2');
+        if(!mute)audioBig.play();
+      }
+    });
+
+    const audioGold = $('audio')[3];
+    //Check for GOLD ball connect
+    $('.goldenball').each((index, goldenball) => {
+      const gold = {
+        x: $(goldenball).position().left,
+        y: $(goldenball).position().top,
+        width: $(goldenball).width(),
+        height: $(goldenball).height()
+      };
+
+      if (isGoldCollideP1(a, gold)) {
+        $('#p1Counter').html(function(i, val) {
+          return +val+10;
+        });
+        $(goldenball).remove();
+        p1score.push('ball', 'ball2', 'ball3', 'ball4', 'ball5', 'ball6', 'ball7', 'ball8', 'ball9', 'ball10');
+        if(!mute)audioGold.play();
+
+      }
+
+      if (isGoldCollideP2(c, gold)) {
+        $('#p2Counter').html(function(i, val) {
+          return +val+10;
+        });
+        $(goldenball).remove();
+        p2score.push('ball', 'ball2', 'ball3', 'ball4', 'ball5', 'ball6', 'ball7', 'ball8', 'ball9', 'ball10');
+        if(!mute)audioGold.play();
       }
     });
 
@@ -258,6 +348,8 @@ $(() => {
     });
   });
 
+
+
   $(window).keyup(function(e) {
     d[e.which] = false;
   });
@@ -271,7 +363,8 @@ $(() => {
     } else $('.showWinner').text('It\'s a draw');
   }
 
-  let timeLeft = 20;
+
+  let timeLeft = (gameTime / 1000);
   const elem = document.getElementById('countDownTimer');
   const timerId = setInterval(countdown, 1000);
   function countdown() {
@@ -285,4 +378,50 @@ $(() => {
       timeLeft--;
     }
   }
+
+
+  $('#mute-button').on('click', function(){
+    $('audio').each(function(){
+      console.log('paused')
+      $(this).volume = 0.0;
+    });
+
+  });
+
+  // // Mute a singular HTML5 element
+  // function muteMe(elem) {
+  //   elem.muted = false;
+  //   elem.pause();
+  // }
+  //
+  // function unMuteMe(elem) {
+  //   elem.muted = true;
+  //   elem.play();
+  // }
+  //
+  // // Try to mute all audio elements on the page
+  // function mutePage() {
+  //   const audios = document.querySelectorAll('audio');
+  //   [].forEach.call(audios, function(audio) {
+  //     muteMe(audio);
+  //   });
+  // }
+  //
+  // function unMutePage() {
+  //   const audios = document.querySelectorAll('audio');
+  //   [].forEach.call(audios, function(audio) {
+  //     unMuteMe(audio);
+  //   });
+  // }
+
+
+  $('#mute').click(function() {
+    if (elem.muted === false){
+      mutePage();
+    } else {
+      unMutePage();
+    }
+  });
+
+
 });

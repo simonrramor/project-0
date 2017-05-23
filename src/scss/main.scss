@@ -1,41 +1,51 @@
 body{
+  width: 100%;
   text-align: center;
+  background-color: F4FDFC;
+  position: fixed;
+  overflow-x:auto;
 }
+
+a{
+  font-size: 30px;
+  font-family: monospace;
+}
+
+.gameScreen{
+  margin: 40px auto;
+}
+
 #gameBoard {
   position:relative;
-  width:1000px;
-  height:80vh;
-  border:2px solid red;
+  width:90%;
+  height:600px;
+  border:1px solid lightgrey;
   display: inline-block;
   margin: 0 20px;
 }
 
-.title{
-  font-size: 50px;
-  font-family: monospace;
-  margin: 20px auto;
-  text-align: center;
-}
-
 .Scoreboard  {
-  width: 190px;
-  display: inline-block;
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  overflow: hidden;
 }
-
 .p1score{
   display: block;
-  margin-bottom: 53vh;
+  overflow: hidden;
 }
-
 .p1score{
   display: block;
+  overflow: hidden;
 }
+
 #p1Counter{
   display: table;
   font-size: 90px;
   margin: 20px;
   font-family: monospace;
 }
+
 #p2Counter{
   display: table;
   font-size: 90px;
@@ -43,30 +53,28 @@ body{
   font-family: monospace;
 }
 
-  .boxP1 {
-    position:absolute;
-    top:0px; left:980px;
-    width:20px; height:20px;
-    background-color: dodgerblue;
-    transition: all 0.2s ease;
-  }
+.boxP1 {
+  position:absolute;
+  top:580px; left:49%;
+  width:20px; height:20px;
+  background-color: hotpink;
+  transition: all 0.2s ease;
+}
 
-  .boxP2 {
-    position:absolute;
-    top:77.9vh; left:980px;
-    width:20px; height:20px;
-    background-color: orange;
-    transition: all 0.2s ease;
-  }
+.boxP2 {
+  position:absolute;
+  top:580px; left:51%;
+  width:20px; height:20px;
+  background-color: orange;
+  transition: all 0.2s ease;
+}
 
-
-
-  .ball {
-    position:absolute;
-    width:10px; height:10px;
-    border-radius: 100px;
-    background-color: dodgerblue;
-  }
+.ball {
+  position:absolute;
+  width:10px; height:10px;
+  border-radius: 100px;
+  background-color: dodgerblue;
+}
 
 .bigBall{
   position:absolute;
@@ -74,17 +82,31 @@ body{
   border-radius: 100px;
   background-color: green;
 }
-  .badball {
-    position:absolute;
-    width:10px; height:10px;
-    border-radius: 100px;
-    background-color: red;
-  }
+
+.badball {
+  position:absolute;
+  width:10px; height:10px;
+  border-radius: 100px;
+  background-color: red;
+}
+
+.goldenball {
+  animation-name: goldenball;
+  position:absolute;
+  width:20px; height:20px;
+  border-radius: 100px;
+  background-color: gold;
+  -webkit-box-shadow: 0px 2px 10px 1px gold;
+-moz-box-shadow: 0px 2px 10px 1px gold;
+box-shadow: 0px 0px 10px 1px gold;
+}
+
+
 
 #countDownTimer{
-  padding-top: 20px;
+  margin-top: 50px;
   height: 40px;
-  font-size: 20px;
+  font-size: 40px;
   font-family: monospace;
   width: 100%;
 
