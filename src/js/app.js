@@ -21,6 +21,7 @@ $(() => {
   const audioError = $('audio')[2];
   const audioGold = $('audio')[3];
   const goldenters = $('audio')[4];
+  const audioend = $('audio')[5];
   let gameTime = 60000;
 
   const rangeSlider = function(){
@@ -433,14 +434,17 @@ $(() => {
       elem.innerHTML = timeLeft + ' seconds remaining';
       timeLeft--;
       if (timeLeft === 0) {
+
         clearTimeout(timerId);
+
         $('.gameScreen').remove();
         $('#gameOverDiv').removeClass('noshow');
+
         checkWinner();
+        if(!mute)audioend.play();
       }
     }
   });
-
 
 
 });
