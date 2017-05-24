@@ -39,17 +39,16 @@ $(() => {
 
   //help
 
-  $('.instructions').click(function(){
+  $('.icon1').click(function(){
     if (help === false){
-      $('#welcomePage').hide();
-      $('#popupBackground').show();
+      $('#popupBackground').fadeIn('fast', 'swing');
       help = true;
     } else if (help === true){
-      $('#welcomePage').show();
-      $('#popupBackground').hide();
+      $('#popupBackground').fadeOut('fast', 'swing');
       help = false;
     }
   });
+
 // instructions button toggle
   $('.icon1').each(function() {
     $(this).data('original', $(this).html());
@@ -60,6 +59,15 @@ $(() => {
     });
   });
 
+  //Mute button toggle
+  $('#mute-button').each(function() {
+    $(this).data('original', $(this).html());
+  }).on('click', function() {
+    $(this).toggleClass('clicked').html(function(_, html) {
+      var org = $(this).data('original');
+      return html === org ? '<i class="fa fa-volume-off" aria-hidden="true"></i>' : org;
+    });
+  });
 
 
   //STARTS WHOLE GAME!!!
@@ -69,15 +77,7 @@ $(() => {
     $('.gameScreen').removeAttr('id', 'hidden');
 
 
-    //Mute button toggle
-    $('#mute-button').each(function() {
-      $(this).data('original', $(this).html());
-    }).on('click', function() {
-      $(this).toggleClass('clicked').html(function(_, html) {
-        var org = $(this).data('original');
-        return html === org ? '<i class="fa fa-volume-off" aria-hidden="true"></i>' : org;
-      });
-    });
+
 
     $('#mute-button').on('click', () => {
       mute = !mute;
@@ -171,7 +171,7 @@ $(() => {
 
         $newGoldDiv.appendTo('#gameBoard').clone().delay(2000).fadeIn(100);
         count ++;
-        goldenters.play();
+        if(!mute)goldenters.play();
 
       }
     }
