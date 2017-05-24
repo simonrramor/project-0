@@ -21,7 +21,7 @@ $(() => {
   const audioError = $('audio')[2];
   const audioGold = $('audio')[3];
   const goldenters = $('audio')[4];
-  let gameTime = 60000;
+  let gameTime = 1000;
 
   const rangeSlider = function(){
     $('input[type=range]').eq(0).on('change', (e) => {
