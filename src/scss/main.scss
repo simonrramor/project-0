@@ -232,7 +232,7 @@ button{
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
+  box-shadow: 0 0 0px transparent;
   position: relative;
   overflow: hidden;
   border: none;
@@ -266,6 +266,13 @@ button{
   right: 0;
 }
 
+.go {
+  font-size: 100px;
+  position: absolute;
+  top: 35%;
+left: 45%;
+}
+
 .Scoreboard  {
   width: 90%;
   display: flex;
@@ -287,7 +294,6 @@ button{
   display: table;
   font-size: 90px;
   margin: 20px;
-  font-family: monospace;
 
 }
 
@@ -296,7 +302,6 @@ button{
   display: table;
   font-size: 90px;
   margin: 20px;
-  font-family: monospace;
 }
 
 @keyframes bounce {
@@ -381,7 +386,6 @@ button{
   margin-top: 50px;
   height: 40px;
   font-size: 40px;
-  font-family: monospace;
   width: 60%;
 
 

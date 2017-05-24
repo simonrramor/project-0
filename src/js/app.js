@@ -21,7 +21,7 @@ $(() => {
   const audioError = $('audio')[2];
   const audioGold = $('audio')[3];
   const goldenters = $('audio')[4];
-  let gameTime = 1000;
+  let gameTime = 60000;
 
   const rangeSlider = function(){
     $('input[type=range]').eq(0).on('change', (e) => {
@@ -36,9 +36,7 @@ $(() => {
 
   rangeSlider();
 
-
   //help
-
   $('.icon1').click(function(){
     if (help === false){
       $('#popupBackground').fadeIn('fast', 'swing');
@@ -49,7 +47,7 @@ $(() => {
     }
   });
 
-// instructions button toggle
+  // instructions button toggle
   $('.icon1').each(function() {
     $(this).data('original', $(this).html());
   }).on('click', function() {
@@ -432,14 +430,13 @@ $(() => {
     const elem = document.getElementById('countDownTimer');
     const timerId = setInterval(countdown, 1000);
     function countdown() {
+      elem.innerHTML = timeLeft + ' seconds remaining';
+      timeLeft--;
       if (timeLeft === 0) {
         clearTimeout(timerId);
         $('.gameScreen').remove();
         $('#gameOverDiv').removeClass('noshow');
         checkWinner();
-      } else {
-        elem.innerHTML = timeLeft + ' seconds remaining';
-        timeLeft--;
       }
     }
   });
