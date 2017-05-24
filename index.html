@@ -14,91 +14,49 @@
   <link rel="stylesheet" href="public/css/reset.css">
   <link rel="stylesheet" href="public/css/main.css">
   <link rel="stylesheet" href="animate.css">
-<link href="https://fonts.googleapis.com/css?family=Raleway+Dots|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway+Dots|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
   <main>
-
+<!-- INSTRUCTIONS AND MUTE ICONS -->
     <div class="instructions">
       <div class="icon1">
-      <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
       </div>
-
-        <button id="mute-button">
-          <i class="fa fa-volume-up" aria-hidden="true"></i></button>
-
+      <button id="mute-button">
+        <i class="fa fa-volume-up" aria-hidden="true"></i></button>
       </div>
-
-    <div class="gameScreen" id="hidden">
-      <div id="gameBoard">
-        <div class="boxP1"></div>
-        <div class="boxP2"></div>
-      </div>
-
-      <div class="Scoreboard">
-        <div class="p1score">
-          <div id="p1Counter">0</div>
-        </div>
-        <div id="countDownTimer">READY...</div>
-        <div class="p2score">
-          <div id="p2Counter">0</div>
-        </div>
-
-
-
-          <audio src="sounds/pop.wav"> </audio>
-          <audio src="sounds/ding.wav"> </audio>
-          <audio src="sounds/error.wav"> </audio>
-          <audio src="sounds/gold.wav"> </audio>
-          <audio src="sounds/goldenters.wav"> </audio>
-          <audio src="sounds/end.wav"> </audio>
+<!-- INSTRUCTIONS POPUP -->
+      <div class="zindex1" id="popupBackground">
+        <div class="infoBox">
+          <h1> INSTRUCTIONS </h1>
+<!-- P1 CONTROLLS -->
+          <div class="player1Controls">
+            <span id="instructionsp1color"><i class="fa fa-square" aria-hidden="true"></i><h1>                    Player 1 __________________</h1></span>
+            <div class="arrowKeys"></div>
+          </div>
+<!-- P2 CONTROLLS -->
+          <div class="player2Controsls">
+            <span id="instructionsp2color"><i class="fa fa-square" aria-hidden="true"></i><h1>                    Player 2 __________________</h1></span>
+            <div class="wsad"></div>
+          </div>
+<!-- DOT EXSPLINATION -->
+          <div class="dotInstructions">
+            <div class="title">
+              <h1>THINGS YOU CAN COLLECT </h1>
+            </div>
+            <blue><i class="fa fa-circle" aria-hidden="true"></i> 1 Point</blue>
+            <green><i class="fa fa-circle" aria-hidden="true"></i>   2 Point</green>
+            <gold><i class="fa fa-circle" aria-hidden="true"></i>   10 Point</gold>
+            <red><i class="fa fa-circle" aria-hidden="true"></i>   -1 Point</red>
+          </div>
         </div>
       </div>
 
-
-
-
-<!-- intruction popup -->
-
-<div class="zindex1" id="popupBackground">
-  <div class="infoBox">
-<h1> INSTRUCTIONS </h1>
-<div class="player1Controls">
- <span id="instructionsp1color"><i class="fa fa-square" aria-hidden="true"></i> <h1>Player 1 __________________</h1></span>
- <div class="arrowKeys"></div>
-</div>
-
-<div class="player2Controsls">
- <span id="instructionsp2color"><i class="fa fa-square" aria-hidden="true"></i> <h1>Player 2 __________________</h1></span>
- <div class="wsad"></div>
-</div>
-
-
-<div class="dotInstructions">
-<div class="title">
-  <h1>THINGS YOU CAN COLLECT </h1>
-</div>
-<blue><i class="fa fa-circle" aria-hidden="true"></i>
-  1 Point
-</blue>
-
-
-<green><i class="fa fa-circle" aria-hidden="true"></i>   2 Point</green>
-<gold><i class="fa fa-circle" aria-hidden="true"></i>   10 Point</gold>
-<red><i class="fa fa-circle" aria-hidden="true"></i>   -1 Point</red>
-
-</div>
-
-  </div>
-</div>
-
-
-
-
-      <!-- Start Screen Stuff -->
-    <div class= "zindex4" id="welcomePage">
+<!-- START SCREEN STUFF -->
+      <div id="welcomePage">
+<!-- SPINNING ANIMATION 1 -->
         <div class="spinner">
           <span class="ball-1"></span>
           <span class="ball-2"></span>
@@ -106,31 +64,61 @@
           <span class="ball-4"></span>
           <span class="ball-5"></span>
         </div>
+<!-- WELCOME COPY -->
         <div class="header">
           <h1> WELCOME TO <strong> COLLECT SOME STUFF.</strong> WHERE THE AIM OF THE GAME IS TO <strong> COLLECT AS MUCH STUFF</strong> AS YOU CAN BEFORE THE TIME RUNS OUT. BUT <strong> DONT COLLECT THE WRONG STUFF</strong>, OR YOU WILL LOSE POINTS AND LOOSE THE GAME AND YOUR FRIEND WILL WIN THE GAME.
-</h1>
-
+          </h1>
         </div>
+<!-- TIME SLIDER -->
         <h1><strong>How long do you want to play for?</strong></h1>
         <div class="range-slider">
-
           <input class="range-slider__range" type="range" step="1000" value="60000" min="30000" max="200000">
-
-        <h1><strong>  <span class="value">Your game will last 60 seconds</span></strong></h1>
+          <h1><strong>  <span class="value">Your game will last 60 seconds</span></strong></h1>
         </div>
-          <div class="startButton">
-            <button class="hvr-underline-from-center" id="start">START</button>
-          </div>
-
+<!-- START BUTTON -->
+        <div class="startButton">
+          <button class="hvr-underline-from-center" id="start">START</button>
+        </div>
       </div>
 
+<!-- GAME SCREEN AND GAME INNARDS -->
+      <div class="gameScreen" id="hidden">
+        <div id="gameBoard">
+<!-- PLAYER CUBES -->
+          <div class="boxP1"></div>
+          <div class="boxP2"></div>
+        </div>
+<!-- SCORE BOARD-->
+        <div class="Scoreboard">
+<!-- P1 SCORE -->
+          <div class="p1score">
+            <div id="p1Counter">0</div>
+          </div>
+<!-- TIMER -->
+          <div id="countDownTimer">READY...</div>
+<!-- P2 SCORE -->
+          <div class="p2score">
+            <div id="p2Counter">0</div>
+          </div>
+        </div>
+      </div>
 
-      <!-- End Screen Stuff -->
+<!-- AUDIO FILES START -->
+      <audio src="sounds/pop.wav"> </audio>
+      <audio src="sounds/ding.wav"> </audio>
+      <audio src="sounds/error.wav"> </audio>
+      <audio src="sounds/gold.wav"> </audio>
+      <audio src="sounds/goldenters.wav"> </audio>
+      <audio src="sounds/end.wav"> </audio>
 
+<!-- END SCREEN -->
       <div class="noshow" id="gameOverDiv">
         <div class="gameoverTitle">GAME OVER!</div>
+<!--WHO WON?-->
         <div class="showWinner"></div>
+<!--HOME BUTTON -->
         <a class="hvr-underline-from-center" id="finish" href="index.html">RETURN TO HOME SCREEN</a>
+<!-- SPINNING ANIMATION 2 -->
         <div class="spinner2">
           <span class="ball-1"></span>
           <span class="ball-2"></span>
@@ -138,8 +126,6 @@
           <span class="ball-4"></span>
           <span class="ball-5"></span>
         </div>
-
-        <!-- <button class="hvr-underline-from-center" id="finish" href="index.html">RETURN TO HOME SCREEN</button> -->
       </div>
 
 

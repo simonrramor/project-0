@@ -24,6 +24,8 @@ $(() => {
   const audioend = $('audio')[5];
   let gameTime = 60000;
 
+
+  //range slider stuff to choose time
   const rangeSlider = function(){
     $('input[type=range]').eq(0).on('change', (e) => {
       gameTime = $(e.target).val();
@@ -31,13 +33,10 @@ $(() => {
       $('.value').text('Your game will last ' + (gameTime / 1000) + ' seconds');
     });
   };
-
-  let help = false;
-  $('#popupBackground').hide();
-
   rangeSlider();
 
-  //help
+  //help icon
+  let help = false;
   $('.icon1').click(function(){
     if (help === false){
       $('#popupBackground').fadeIn('fast', 'swing');
@@ -49,6 +48,7 @@ $(() => {
   });
 
   // instructions button toggle
+  $('#popupBackground').hide();
   $('.icon1').each(function() {
     $(this).data('original', $(this).html());
   }).on('click', function() {
@@ -58,7 +58,11 @@ $(() => {
     });
   });
 
-  //Mute button toggle
+  //MUTE TOGGLE ON AND OFF
+  $('#mute-button').on('click', () => {
+    mute = !mute;
+  });
+  //MUTE TOGGLE BUTTON STYLE ON AND OFF
   $('#mute-button').each(function() {
     $(this).data('original', $(this).html());
   }).on('click', function() {
@@ -68,19 +72,11 @@ $(() => {
     });
   });
 
-
   //STARTS WHOLE GAME!!!
   $('#start').click(function(){
-    console.log('start clicked');
     $( '#welcomePage' ).hide();
     $('.gameScreen').removeAttr('id', 'hidden');
 
-
-
-
-    $('#mute-button').on('click', () => {
-      mute = !mute;
-    });
 
     // v = orgininal value.
     // a,b = direction
@@ -100,7 +96,7 @@ $(() => {
       if (a === 38) return n < 0 ? 0 : n > height ? height : n;
     }
 
-    // makes random amounts of div on the page
+    // ADDS RANDOM AMOUNT OF BLUE (1PT) DOTS INTO THE GAME BOARD
     makeDiv();
     function makeDiv() {
       var  count = 1;
@@ -117,7 +113,7 @@ $(() => {
       }
     }
 
-    //adds in the big green dots
+    //ADDS RANDOM AMOUNT OF GREEN (2pt) DOTS INTO THE GAME BOARD
     makeBigDiv();
     function makeBigDiv() {
       var  count = 1;
@@ -133,7 +129,8 @@ $(() => {
         count ++;
       }
     }
-    // adds in the bad red dotts
+
+    // ADDS RANDOM AMOUNT OF RED (-1PT) DOTS INTO THE GAME BOARD
     makeBadDiv();
     function makeBadDiv() {
       var  count = 1;
@@ -150,12 +147,10 @@ $(() => {
       }
     }
 
-
+    // ADDS ONE GOLD DOT (10PT) INTO THE GAME BOARD AT A RANDOM.
     setTimeout(function () {
       makeGoldDiv();
-
     }, Math.floor(Math.random() * (gameTime - 10000)));
-
     function makeGoldDiv() {
       var  count = 1;
       while (count < numOfGoldDots){
@@ -175,9 +170,9 @@ $(() => {
       }
     }
 
-    // collide function to check for collision
+    // CHECK FOR COLLIDES
 
-    // check for p1 + blue dots
+    // CHECKS FOR P1 COLLIDE WITH BLUE DOTS
     function isCollideP1(a, b) {
       return !(
         ((a.y + a.height) < (b.y)) ||
@@ -186,7 +181,7 @@ $(() => {
         (a.x > (b.x + b.width))
       );
     }
-    // check for p2 + blue dots
+    // CHECKS FOR P2 COLLIDE WITH BLUE DOTS
     function isCollideP2(c, b) {
       return !(
         ((c.y + c.height) < (b.y)) ||
@@ -195,8 +190,7 @@ $(() => {
         (c.x > (b.x + b.width))
       );
     }
-
-    // check for p1 + red dots
+    // CHECKS FOR P1 COLLIDE WITH RED DOTS
     function isBadCollideP1(a, s) {
       return !(
         ((a.y + a.height) < (s.y)) ||
@@ -205,7 +199,7 @@ $(() => {
         (a.x > (s.x + s.width))
       );
     }
-    // check for p2 + red dots
+    // CHECKS FOR P2 COLLIDE WITH RED DOTS
     function isBadCollideP2(c, s) {
       return !(
         ((c.y + c.height) < (s.y)) ||
@@ -214,7 +208,7 @@ $(() => {
         (c.x > (s.x + s.width))
       );
     }
-    // check for p1 + green dots
+    // CHECKS FOR P1 COLLIDE WITH GREEN DOTS
     function isBigCollideP1(a, big) {
       return !(
         ((a.y + a.height) < (big.y)) ||
@@ -223,7 +217,7 @@ $(() => {
         (a.x > (big.x + big.width))
       );
     }
-    // check for p2 + green dots
+    // CHECKS FOR P2 COLLIDE WITH GREEN DOTS
     function isBigCollideP2(c, big) {
       return !(
         ((c.y + c.height) < (big.y)) ||
@@ -232,7 +226,7 @@ $(() => {
         (c.x > (big.x + big.width))
       );
     }
-    // check for p1 + green dots
+    // CHECKS FOR P1 COLLIDE WITH GOLD DOTS
     function isGoldCollideP1(a, gold) {
       return !(
         ((a.y + a.height) < (gold.y)) ||
@@ -241,7 +235,7 @@ $(() => {
         (a.x > (gold.x + gold.width))
       );
     }
-    // check for p2 + GOLD dots
+    // CHECKS FOR P2 COLLIDE WITH GOLD DOTS
     function isGoldCollideP2(c, gold) {
       return !(
         ((c.y + c.height) < (gold.y)) ||
@@ -251,17 +245,17 @@ $(() => {
       );
     }
 
-    //movement using keys
+    // CHECKS FOR MOVEMENT
     $(window).keydown(function(e) {
       d[e.which] = true;
-
+      // CHECKS FOR P1 MOVEMENT
       const a = {
         x: boxP1.position().left,
         y: boxP1.position().top,
         width: boxP1.width(),
         height: boxP1.height()
       };
-
+      // CHECKS FOR P2 MOVEMENT
       const c = {
         x: boxP2.position().left,
         y: boxP2.position().top,
@@ -270,7 +264,7 @@ $(() => {
       };
 
 
-      //Check for bad ball connect
+// POSITION OF RED DOTS
       $('.badball').each((index, badball) => {
         const s = {
           x: $(badball).position().left,
@@ -278,7 +272,7 @@ $(() => {
           width: $(badball).width(),
           height: $(badball).height()
         };
-
+// WHAT TO DO IF P1 HITS BAD DOT
         if (isBadCollideP1(a, s)) {
           $('#p1Counter').html(function(i, val) {
             return val-1;
@@ -287,7 +281,7 @@ $(() => {
           p1score.pop();
           if(!mute)audioError.play();
         }
-
+// WHAT TO DO IF P2 HITS BAD DOT
         if (isBadCollideP2(c, s)) {
           $('#p2Counter').html(function(i, val) {
             return val-1;
@@ -298,7 +292,7 @@ $(() => {
         }
       });
 
-      //Check for ball connect
+// POSITION OF BLUE DOTS
       $('.ball').each((index, ball) => {
         const b = {
           x: $(ball).position().left,
@@ -306,9 +300,7 @@ $(() => {
           width: $(ball).width(),
           height: $(ball).height()
         };
-
-
-
+// WHAT TO DO IF P2 HITS BLUE DOT
         if (isCollideP1(a, b)) {
           $('#p1Counter').html(function(i, val) {
             return +val+1;
@@ -316,9 +308,8 @@ $(() => {
           $(ball).remove();
           p1score.push('ball');
           if(!mute)audio.play();
-
         }
-
+// WHAT TO DO IF P2 HITS BLUE DOT
         if (isCollideP2(c, b)) {
           $('#p2Counter').html(function(i, val) {
             return +val+1;
@@ -331,7 +322,7 @@ $(() => {
       });
 
 
-      //Check for big ball connect
+// POSITION OF GREEN DOTS
       $('.bigBall').each((index, bigball) => {
         const big = {
           x: $(bigball).position().left,
@@ -339,7 +330,7 @@ $(() => {
           width: $(bigball).width(),
           height: $(bigball).height()
         };
-
+// WHAT TO DO IF P1 HITS GREEN DOT
         if (isBigCollideP1(a, big)) {
           $('#p1Counter').html(function(i, val) {
             return +val+2;
@@ -347,9 +338,8 @@ $(() => {
           $(bigball).remove();
           p1score.push('ball', 'ball2');
           if(!mute)audioBig.play();
-
         }
-
+// WHAT TO DO IF P2 HITS GREEN DOT
         if (isBigCollideP2(c, big)) {
           $('#p2Counter').html(function(i, val) {
             return +val+2;
@@ -361,7 +351,7 @@ $(() => {
       });
 
 
-      //Check for GOLD ball connect
+// POSITION OF GOLD DOTS
       $('.goldenball').each((index, goldenball) => {
         const gold = {
           x: $(goldenball).position().left,
@@ -369,7 +359,7 @@ $(() => {
           width: $(goldenball).width(),
           height: $(goldenball).height()
         };
-
+// WHAT TO DO IF P1 HITS GOLD DOT
         if (isGoldCollideP1(a, gold)) {
           $('#p1Counter').html(function(i, val) {
             return +val+10;
@@ -377,9 +367,8 @@ $(() => {
           $(goldenball).remove();
           p1score.push('ball', 'ball2', 'ball3', 'ball4', 'ball5', 'ball6', 'ball7', 'ball8', 'ball9', 'ball10');
           if(!mute)audioGold.play();
-
         }
-
+// WHAT TO DO IF P2 HITS GOLD DOT
         if (isGoldCollideP2(c, gold)) {
           $('#p2Counter').html(function(i, val) {
             return +val+10;
@@ -392,15 +381,18 @@ $(() => {
 
 
 
-      // box movement controlls
-      boxP1.css({
-        left: function(i,v) {
-          return newLocationP1(v, 65, 68);
-        },
-        top: function(i,v) {
-          return newLocationP1(v, 87, 83);
-        }
-      });
+// MOVEMENT FUNCTIONS
+
+// P1 MOVEMENT
+boxP1.css({
+  left: function(i,v) {
+    return newLocationP1(v, 65, 68);
+  },
+  top: function(i,v) {
+    return newLocationP1(v, 87, 83);
+  }
+});
+// P2 MOVEMENT
       boxP2.css({
         left: function(i,v) {
           return newLocationP2(v, 37, 39);
@@ -412,12 +404,12 @@ $(() => {
     });
 
 
-
+// WHEN KEY IS NOT DOWN
     $(window).keyup(function(e) {
       d[e.which] = false;
     });
 
-    //checking for winnner function
+// CHECK FOR WINNER
     function checkWinner() {
       if (p1score.length > p2score.length){
         $('.showWinner').text('Player One Wins');
@@ -426,7 +418,7 @@ $(() => {
       } else $('.showWinner').text('It\'s a draw');
     }
 
-
+// GAME TIMER AND END
     let timeLeft = (gameTime / 1000);
     const elem = document.getElementById('countDownTimer');
     const timerId = setInterval(countdown, 1000);
@@ -445,6 +437,5 @@ $(() => {
       }
     }
   });
-
-
+// END
 });

@@ -1,86 +1,4 @@
-.zindex1{
-  position: absolute;
-  z-index: 1
-}
-.zindex2{
-  position: absolute;
-  z-index: 2
-}
-.zindex3{
-  position: absolute;
-  z-index: 3
-}
-.zindex4{
-  position: absolute;
-  z-index: 4
-}
 
-.player1Controls{
-  margin-bottom: 50px;
-  margin-top: 50px;
-}
-
-.player2Controls{
-  margin-bottom: 50px;
-  margin-bottom: 30px;
-}
-
-blue{
-  font-size: 20px;
-  color: dodgerblue;
-  padding: 30px;
-}
-
-green{
-  font-size: 20px;
-  color: green;
-  padding: 30px;
-}
-
-gold{
-  font-size: 20px;
-  color: gold;
-  padding: 30px;
-}
-
-red{
-  font-size: 20px;
-  color: red;
-  padding: 30px;
-}
-#popupBackground{
-  z-index: 40;
-  position: absolute;
-  height: 70vh;
-  background-color: black;
-  top: 104px;
-  left: 359px;
-  width: 55%;
-  padding: 50px;
-}
-
-#instructionsp1color{
-  color: hotpink;
-  font-size: 20px;
-  margin-right: 20px;
-}
-#instructionsp2color{
-  color: orange;
-  font-size: 20px;
-  margin-right: 20px;
-}
-.infoBox{
-  font-size: 16px;
-  color: white;
-}
-
-.dotInstructions{
-  margin-top: 100px;
-}
-
-.title{
-  margin-bottom: 50px;
-}
 body{
   font-family: 'Roboto', sans-serif;
   width: 100%;
@@ -92,14 +10,9 @@ body{
   border: 10px solid black;
   overflow: hidden;
 }
-.instructions{
-  position: relative;
-  top: -7px;
-  float: right;
 
-  color: #000;
-  width: 100%;
-}
+
+ // HEADDER BUTTONS STYLE
 
 .icon1:hover{
   color: gold;
@@ -126,6 +39,81 @@ body{
   color: gold;
 
 }
+
+// INSTRUCTION STYLES
+
+.player1Controls{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.player2Controls{
+  margin-bottom: 50px;
+  margin-bottom: 30px;
+}
+
+blue{
+  font-size: 20px;
+  color: dodgerblue;
+  padding: 30px;
+}
+green{
+  font-size: 20px;
+  color: green;
+  padding: 30px;
+}
+gold{
+  font-size: 20px;
+  color: gold;
+  padding: 30px;
+}
+red{
+  font-size: 20px;
+  color: red;
+  padding: 30px;
+}
+
+#popupBackground{
+  z-index: 40;
+  position: absolute;
+  height: 70vh;
+  background-color: black;
+  top: 104px;
+  left: 359px;
+  width: 55%;
+  padding: 50px;
+}
+
+#instructionsp1color{
+  color: hotpink;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+#instructionsp2color{
+  color: orange;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.infoBox{
+  font-size: 16px;
+  color: white;
+}
+
+.dotInstructions{
+  margin-top: 100px;
+}
+
+.instructions{
+  position: relative;
+  top: -7px;
+  float: right;
+
+  color: #000;
+  width: 100%;
+}
+
 .arrowKeys {
   background: url('../images/arrowkeys.png');
   height: 77px;
@@ -146,13 +134,21 @@ body{
   display: none;
 }
 
+// TEXT STYLING
+
+.title{
+  margin-bottom: 50px;
+}
+
 .header{
   margin: 40px auto;
   max-width: 600px;
 }
+
 strong{
   font-weight: 600;
 }
+
 h1{
   font-size: 30px;
   display: inline;
@@ -168,11 +164,6 @@ h2{
   text-transform: uppercase;
 }
 
-a{
-  font-size: 30px;
-  font-family: monospace;
-}
-
 #welcomePage{
   display: inline;
   position: absolute;
@@ -181,10 +172,10 @@ a{
 }
 
 
+// GAME SCREEN STUFF
 
 .gameScreen{
   margin: 0 auto;
-
 }
 
 #gameBoard {
@@ -196,6 +187,9 @@ a{
   display: inline-block;
   margin: 0 20px;
 }
+
+// BUTTON STYLES
+
 .startButton{
   margin: 30px auto;
 }
@@ -211,22 +205,8 @@ a:visited{
   color: black;
 }
 
-#finish{
-  margin: 0 auto;
-  background-color: white;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 30px;
-  padding: 10px 30px;
-  border: none;
-  cursor: cell;
-  color: black;
-}
 
-button{
-}
-
-/* Underline From Center */
+// FUN UNDERLINE ON HOVER
 .hvr-underline-from-center {
   display: inline-block;
   vertical-align: middle;
@@ -266,12 +246,7 @@ button{
   right: 0;
 }
 
-.go {
-  font-size: 100px;
-  position: absolute;
-  top: 35%;
-left: 45%;
-}
+// SCOREBOARD
 
 .Scoreboard  {
   width: 90%;
@@ -280,11 +255,15 @@ left: 45%;
   overflow: hidden;
   justify-content: space-between;
 }
+
+// PLAYER SCORE COUNT
+
 .p1score{
   display: block;
   overflow: hidden;
 }
-.p1score{
+
+.p2score{
   display: block;
   overflow: hidden;
 }
@@ -302,6 +281,29 @@ left: 45%;
   display: table;
   font-size: 90px;
   margin: 20px;
+}
+
+
+// BOX STYLES
+.boxP1 {
+  position:absolute;
+  top:570px; left:49%;
+  width:20px; height:20px;
+  background-color: hotpink;
+  transition: all 0.2s ease;
+  -webkit-animation: bounce 1s ease-out;
+    -webkit-animation-iteration-count: 3;
+}
+
+.boxP2 {
+  position:absolute;
+  top:570px; left:51%;
+  width:20px; height:20px;
+  background-color: orange;
+  transition: all 0.2s ease;
+  -webkit-animation: bounce 1s ease-out;
+    -webkit-animation-iteration-count: 3;
+
 }
 
 @keyframes bounce {
@@ -325,27 +327,7 @@ left: 45%;
   }
 }
 
-.boxP1 {
-  position:absolute;
-  top:570px; left:49%;
-  width:20px; height:20px;
-  background-color: hotpink;
-  transition: all 0.2s ease;
-  -webkit-animation: bounce 1s ease-out;
-    -webkit-animation-iteration-count: 3;
-}
-
-.boxP2 {
-  position:absolute;
-  top:570px; left:51%;
-  width:20px; height:20px;
-  background-color: orange;
-  transition: all 0.2s ease;
-  -webkit-animation: bounce 1s ease-out;
-    -webkit-animation-iteration-count: 3;
-
-}
-
+// DOT/BALL STYLES
 .ball {
   position:absolute;
   width:10px; height:10px;
@@ -378,10 +360,7 @@ left: 45%;
   box-shadow: 0px 0px 10px 1px gold;
 }
 
-// .scoreContent{
-//   align-content: center;
-// }
-
+// COUNT DOWN TIMER
 #countDownTimer{
   margin-top: 50px;
   height: 40px;
@@ -391,8 +370,27 @@ left: 45%;
 
 }
 
+// GAME OVER SCREEN
+
+#finish{
+  margin: 0 auto;
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  padding: 10px 30px;
+  border: none;
+  cursor: cell;
+  color: black;
+}
+
 #hidden{
   visibility: hidden;
+}
+
+.gameoverTitle{
+  font-size: 50px;
+  padding-top: 200px;
 }
 
 #gameover{
@@ -407,11 +405,6 @@ left: 45%;
   }
 }
 
-.gameoverTitle{
-  font-size: 50px;
-  padding-top: 200px;
-}
-
 .showWinner{
   font-size: 100px;
   text-transform: uppercase;
@@ -420,6 +413,7 @@ left: 45%;
     -webkit-animation-iteration-count: 3;
 }
 
+// // END PULSE ANIMATION ON TEXT
 @keyframes pulse {
   from {
     transform: scale3d(1, 1, 1);
@@ -434,11 +428,7 @@ left: 45%;
   }
 }
 
-
-
-
-// slider style
-
+// SLIDER STYLING FOR CROSS BROWSER SUPPORT
 input {
   -webkit-appearance: none;
   width: 80%;
@@ -474,15 +464,12 @@ input::-webkit-slider-thumb:after {
 }
 
 
-//random slider styles
-
+//SLIDER STYLES
 // Base Colors
 $shade-10: #2c3e50 !default;
 $shade-1: #d7dcdf !default;
 $shade-0: #fff !default;
 $teal: gold !default;
-
-
 // Reset
 * {
   &,
@@ -492,26 +479,19 @@ $teal: gold !default;
   }
 }
 
-
-
-// Range Slider
+// RANGE SLIDER STYLES
 $range-width: 100% !default;
-
 $range-handle-color: $shade-10 !default;
 $range-handle-color-hover: gold !default;
 $range-handle-size: 15px !default;
-
 $range-track-color: $shade-1 !default;
 $range-track-height: 5px !default;
-
 $range-label-color: $shade-10 !default;
 $range-label-width: 60px !default;
-
 .value {
   display: inline-block;
   margin: 0 auto;
 }
-
 
 .range-slider__range {
   -webkit-appearance: none;
@@ -541,7 +521,6 @@ $range-label-width: 60px !default;
   &:active::-webkit-slider-thumb {
     background: $range-handle-color-hover;
   }
-
   &::-moz-range-thumb {
     width: $range-handle-size;
     height: $range-handle-size;
@@ -550,19 +529,17 @@ $range-label-width: 60px !default;
     background: $range-handle-color;
     cursor: cell;
     transition: background .15s ease-in-out;
-
     &:hover {
       background: $range-handle-color-hover;
     }
   }
-
   &:active::-moz-range-thumb {
     background: $range-handle-color-hover;
   }
 }
 
-
 // Range Label
+
 .range-slider__value {
   display: inline-block;
   position: relative;
@@ -574,37 +551,23 @@ $range-label-width: 60px !default;
   margin: 10px auto;
 }
 
-
 // Firefox Overrides
+
 ::-moz-range-track {
   background: $range-track-color;
   border: 0;
 }
 
 input::-moz-focus-inner,
+
 input::-moz-focus-outer {
   border: 0;
 }
 
 
-//dots animation on home screen
-$colors:
-//   red,
-//   dodgerblue,
-// green,
-// orange,
-//   hotpink,
-//   gold,
-//   #CDDC39,
-//   #FFEB3B;
-black,
-black,
-black,
-gold,
-black,
-black,
-black,
-black;
+
+// CSS SPINNER ANIMATIONS
+$colors: black,black,black,gold,black,black,black,black;
 
 .spinner {
   position: absolute;
@@ -654,6 +617,3 @@ black;
     animation-timing-function: cubic-bezier(0.5, 0.3 * $i, 0.9, 0.9);
   }
 }
-
-
-//box thing
