@@ -31,9 +31,35 @@ $(() => {
     });
   };
 
+  let help = false;
+  $('#popupBackground').hide();
+
   rangeSlider();
 
-  // trying to get sliders to work
+
+  //help
+
+  $('.instructions').click(function(){
+    if (help === false){
+      $('#welcomePage').hide();
+      $('#popupBackground').show();
+      help = true;
+    } else if (help === true){
+      $('#welcomePage').show();
+      $('#popupBackground').hide();
+      help = false;
+    }
+  });
+// instructions button toggle
+  $('.icon1').each(function() {
+    $(this).data('original', $(this).html());
+  }).on('click', function() {
+    $(this).toggleClass('clicked').html(function(_, html) {
+      var org = $(this).data('original');
+      return html === org ? '<i class="fa fa-times-circle" aria-hidden="true"></i>' : org;
+    });
+  });
+
 
 
   //STARTS WHOLE GAME!!!
@@ -41,12 +67,6 @@ $(() => {
     console.log('start clicked');
     $( '#welcomePage' ).hide();
     $('.gameScreen').removeAttr('id', 'hidden');
-
-
-
-
-
-
 
 
     //Mute button toggle

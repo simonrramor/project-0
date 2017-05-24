@@ -1,3 +1,86 @@
+.zindex1{
+  position: absolute;
+  z-index: 1
+}
+.zindex2{
+  position: absolute;
+  z-index: 2
+}
+.zindex3{
+  position: absolute;
+  z-index: 3
+}
+.zindex4{
+  position: absolute;
+  z-index: 4
+}
+
+.player1Controls{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.player2Controls{
+  margin-bottom: 50px;
+  margin-bottom: 30px;
+}
+
+blue{
+  color: dodgerblue;
+  padding: 30px;
+}
+
+green{
+  color: green;
+  padding: 30px;
+}
+
+gold{
+  color: gold;
+  padding: 30px;
+}
+
+red{
+  color: red;
+  padding: 30px;
+}
+#popupBackground{
+  position: absolute;
+  height: vh;
+  background-color: rgba(0,0,0,.8);
+  top: 104px;
+  left: 252px;
+width: 60%;
+  padding: 50px;
+}
+
+.gameboarPosition{
+  margin-top: 400px;
+  height: 500px;
+  background-color: red;
+}
+#instructionsp1color{
+  color: hotpink;
+  font-size: 20px;
+  margin-right: 20px;
+}
+#instructionsp2color{
+  color: orange;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.infoBox{
+  font-size: 16px;
+  color: white;
+}
+
+.dotInstructions{
+  margin-top: 70px;
+}
+
+.title{
+  margin-bottom: 40px;
+}
 body{
   font-family: 'Roboto', sans-serif;
   width: 100%;
@@ -11,18 +94,44 @@ body{
 }
 .instructions{
   position: relative;
-    top: -820px;
-    float: right;
-    font-size: 40px;
-    color: #000;
-}
-
-.icon:hover{
-  color: aqua;
-}
-
-.icon{
+  top: -820px;
   float: right;
+  font-size: 40px;
+  color: #000;
+  width: 100%;
+}
+
+.arrowKeys {
+  background: url('../images/arrowkeys.png');
+  height: 77px;
+  width: 119px;;
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+
+.wsad{
+  background: url('../images/wsad.png');
+  height: 77px;
+  width: 119px;;
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+
+.hidden{
+  display: none;
+}
+
+.icon1:hover{
+  color: gold;
+}
+
+.icon1{
+  float: right;
+  margin: 20px 20px;
+  cursor: cell;
+}
+.icon2{
+  float: left;
   margin: 20px 20px;
 }
 .header{
@@ -34,7 +143,7 @@ strong{
 }
 h1{
   font-size: 30px;
-
+  display: inline;
   font-weight: 300;
   line-height: 1.2;
   text-transform: uppercase;
@@ -57,8 +166,9 @@ a{
   position: absolute;
   top: 20vh;
   left: 30%;
-  z-index: 4;
 }
+
+
 
 .gameScreen{
   margin: 40px auto;
@@ -264,9 +374,6 @@ button{
 
 }
 
-.clicked{
-  background-color: red;
-}
 
 
 
@@ -303,7 +410,7 @@ input::-webkit-slider-thumb:after {
   z-index: 1;
   right: 20px;
   top: 5px;
-  background: #2ecc71;
+  background: gold;
 }
 
 
@@ -313,7 +420,7 @@ input::-webkit-slider-thumb:after {
 $shade-10: #2c3e50 !default;
 $shade-1: #d7dcdf !default;
 $shade-0: #fff !default;
-$teal: #1abc9c !default;
+$teal: gold !default;
 
 
 // Reset
@@ -331,7 +438,7 @@ $teal: #1abc9c !default;
 $range-width: 100% !default;
 
 $range-handle-color: $shade-10 !default;
-$range-handle-color-hover: $teal !default;
+$range-handle-color-hover: gold !default;
 $range-handle-size: 15px !default;
 
 $range-track-color: $shade-1 !default;
@@ -363,7 +470,7 @@ $range-label-width: 60px !default;
     height: $range-handle-size;
     border-radius: 50%;
     background: $range-handle-color;
-    cursor: pointer;
+    cursor: cell;
     transition: background .15s ease-in-out;
 
     &:hover {
@@ -381,7 +488,7 @@ $range-label-width: 60px !default;
     border: 0;
     border-radius: 50%;
     background: $range-handle-color;
-    cursor: pointer;
+    cursor: cell;
     transition: background .15s ease-in-out;
 
     &:hover {
