@@ -130,6 +130,8 @@ $(() => {
       }
     }
 
+
+
     // ADDS RANDOM AMOUNT OF RED (-1PT) DOTS INTO THE GAME BOARD
     makeBadDiv();
     function makeBadDiv() {
@@ -161,8 +163,6 @@ $(() => {
           'left': posx + 'px',
           'top': posy + 'px'
         });
-
-
         $newGoldDiv.appendTo('#gameBoard');
         count ++;
         if(!mute)goldenters.play();
@@ -173,75 +173,75 @@ $(() => {
     // CHECK FOR COLLIDES
 
     // CHECKS FOR P1 COLLIDE WITH BLUE DOTS
-    function isCollideP1(a, b) {
+    function isCollideP1(p1Cube, blueDot) {
       return !(
-        ((a.y + a.height) < (b.y)) ||
-        (a.y > (b.y + b.height)) ||
-        ((a.x + a.width) < b.x) ||
-        (a.x > (b.x + b.width))
+        ((p1Cube.y + p1Cube.height) < (blueDot.y)) ||
+        (p1Cube.y > (blueDot.y + blueDot.height)) ||
+        ((p1Cube.x + p1Cube.width) < blueDot.x) ||
+        (p1Cube.x > (blueDot.x + blueDot.width))
       );
     }
     // CHECKS FOR P2 COLLIDE WITH BLUE DOTS
-    function isCollideP2(c, b) {
+    function isCollideP2(p2Cube, blueDot) {
       return !(
-        ((c.y + c.height) < (b.y)) ||
-        (c.y > (b.y + b.height)) ||
-        ((c.x + c.width) < b.x) ||
-        (c.x > (b.x + b.width))
+        ((p2Cube.y + p2Cube.height) < (blueDot.y)) ||
+        (p2Cube.y > (blueDot.y + blueDot.height)) ||
+        ((p2Cube.x + p2Cube.width) < blueDot.x) ||
+        (p2Cube.x > (blueDot.x + blueDot.width))
       );
     }
     // CHECKS FOR P1 COLLIDE WITH RED DOTS
-    function isBadCollideP1(a, s) {
+    function isBadCollideP1(p1Cube, redDot) {
       return !(
-        ((a.y + a.height) < (s.y)) ||
-        (a.y > (s.y + s.height)) ||
-        ((a.x + a.width) < s.x) ||
-        (a.x > (s.x + s.width))
+        ((p1Cube.y + p1Cube.height) < (redDot.y)) ||
+        (p1Cube.y > (redDot.y + redDot.height)) ||
+        ((p1Cube.x + p1Cube.width) < redDot.x) ||
+        (p1Cube.x > (redDot.x + redDot.width))
       );
     }
     // CHECKS FOR P2 COLLIDE WITH RED DOTS
-    function isBadCollideP2(c, s) {
+    function isBadCollideP2(p2Cube, redDot) {
       return !(
-        ((c.y + c.height) < (s.y)) ||
-        (c.y > (s.y + s.height)) ||
-        ((c.x + c.width) < s.x) ||
-        (c.x > (s.x + s.width))
+        ((p2Cube.y + p2Cube.height) < (redDot.y)) ||
+        (p2Cube.y > (redDot.y + redDot.height)) ||
+        ((p2Cube.x + p2Cube.width) < redDot.x) ||
+        (p2Cube.x > (redDot.x + redDot.width))
       );
     }
     // CHECKS FOR P1 COLLIDE WITH GREEN DOTS
-    function isBigCollideP1(a, big) {
+    function isBigCollideP1(p1Cube, greenDot) {
       return !(
-        ((a.y + a.height) < (big.y)) ||
-        (a.y > (big.y + big.height)) ||
-        ((a.x + a.width) < big.x) ||
-        (a.x > (big.x + big.width))
+        ((p1Cube.y + p1Cube.height) < (greenDot.y)) ||
+        (p1Cube.y > (greenDot.y + greenDot.height)) ||
+        ((p1Cube.x + p1Cube.width) < greenDot.x) ||
+        (p1Cube.x > (greenDot.x + greenDot.width))
       );
     }
     // CHECKS FOR P2 COLLIDE WITH GREEN DOTS
-    function isBigCollideP2(c, big) {
+    function isBigCollideP2(p2Cube, greenDot) {
       return !(
-        ((c.y + c.height) < (big.y)) ||
-        (c.y > (big.y + big.height)) ||
-        ((c.x + c.width) < big.x) ||
-        (c.x > (big.x + big.width))
+        ((p2Cube.y + p2Cube.height) < (greenDot.y)) ||
+        (p2Cube.y > (greenDot.y + greenDot.height)) ||
+        ((p2Cube.x + p2Cube.width) < greenDot.x) ||
+        (p2Cube.x > (greenDot.x + greenDot.width))
       );
     }
     // CHECKS FOR P1 COLLIDE WITH GOLD DOTS
-    function isGoldCollideP1(a, gold) {
+    function isGoldCollideP1(p1Cube, goldDot) {
       return !(
-        ((a.y + a.height) < (gold.y)) ||
-        (a.y > (gold.y + gold.height)) ||
-        ((a.x + a.width) < gold.x) ||
-        (a.x > (gold.x + gold.width))
+        ((p1Cube.y + p1Cube.height) < (goldDot.y)) ||
+        (p1Cube.y > (goldDot.y + goldDot.height)) ||
+        ((p1Cube.x + p1Cube.width) < goldDot.x) ||
+        (p1Cube.x > (goldDot.x + goldDot.width))
       );
     }
     // CHECKS FOR P2 COLLIDE WITH GOLD DOTS
-    function isGoldCollideP2(c, gold) {
+    function isGoldCollideP2(p2Cube, goldDot) {
       return !(
-        ((c.y + c.height) < (gold.y)) ||
-        (c.y > (gold.y + gold.height)) ||
-        ((c.x + c.width) < gold.x) ||
-        (c.x > (gold.x + gold.width))
+        ((p2Cube.y + p2Cube.height) < (goldDot.y)) ||
+        (p2Cube.y > (goldDot.y + goldDot.height)) ||
+        ((p2Cube.x + p2Cube.width) < goldDot.x) ||
+        (p2Cube.x > (goldDot.x + goldDot.width))
       );
     }
 
@@ -249,14 +249,14 @@ $(() => {
     $(window).keydown(function(e) {
       d[e.which] = true;
       // CHECKS FOR P1 MOVEMENT
-      const a = {
+      const p1Cube = {
         x: boxP1.position().left,
         y: boxP1.position().top,
         width: boxP1.width(),
         height: boxP1.height()
       };
       // CHECKS FOR P2 MOVEMENT
-      const c = {
+      const p2Cube = {
         x: boxP2.position().left,
         y: boxP2.position().top,
         width: boxP2.width(),
@@ -266,14 +266,14 @@ $(() => {
 
 // POSITION OF RED DOTS
       $('.badball').each((index, badball) => {
-        const s = {
+        const redDot = {
           x: $(badball).position().left,
           y: $(badball).position().top,
           width: $(badball).width(),
           height: $(badball).height()
         };
 // WHAT TO DO IF P1 HITS BAD DOT
-        if (isBadCollideP1(a, s)) {
+        if (isBadCollideP1(p1Cube, redDot)) {
           $('#p1Counter').html(function(i, val) {
             return val-1;
           });
@@ -282,7 +282,7 @@ $(() => {
           if(!mute)audioError.play();
         }
 // WHAT TO DO IF P2 HITS BAD DOT
-        if (isBadCollideP2(c, s)) {
+        if (isBadCollideP2(p2Cube, redDot)) {
           $('#p2Counter').html(function(i, val) {
             return val-1;
           });
@@ -294,14 +294,14 @@ $(() => {
 
 // POSITION OF BLUE DOTS
       $('.ball').each((index, ball) => {
-        const b = {
+        const blueDot = {
           x: $(ball).position().left,
           y: $(ball).position().top,
           width: $(ball).width(),
           height: $(ball).height()
         };
-// WHAT TO DO IF P2 HITS BLUE DOT
-        if (isCollideP1(a, b)) {
+// WHAT TO DO IF P1 HITS BLUE DOT
+        if (isCollideP1(p1Cube, blueDot)) {
           $('#p1Counter').html(function(i, val) {
             return +val+1;
           });
@@ -310,7 +310,7 @@ $(() => {
           if(!mute)audio.play();
         }
 // WHAT TO DO IF P2 HITS BLUE DOT
-        if (isCollideP2(c, b)) {
+        if (isCollideP2(p2Cube, blueDot)) {
           $('#p2Counter').html(function(i, val) {
             return +val+1;
           });
@@ -324,14 +324,14 @@ $(() => {
 
 // POSITION OF GREEN DOTS
       $('.bigBall').each((index, bigball) => {
-        const big = {
+        const greenDot = {
           x: $(bigball).position().left,
           y: $(bigball).position().top,
           width: $(bigball).width(),
           height: $(bigball).height()
         };
 // WHAT TO DO IF P1 HITS GREEN DOT
-        if (isBigCollideP1(a, big)) {
+        if (isBigCollideP1(p1Cube, greenDot)) {
           $('#p1Counter').html(function(i, val) {
             return +val+2;
           });
@@ -340,7 +340,7 @@ $(() => {
           if(!mute)audioBig.play();
         }
 // WHAT TO DO IF P2 HITS GREEN DOT
-        if (isBigCollideP2(c, big)) {
+        if (isBigCollideP2(p2Cube, greenDot)) {
           $('#p2Counter').html(function(i, val) {
             return +val+2;
           });
@@ -353,14 +353,14 @@ $(() => {
 
 // POSITION OF GOLD DOTS
       $('.goldenball').each((index, goldenball) => {
-        const gold = {
+        const goldDot = {
           x: $(goldenball).position().left,
           y: $(goldenball).position().top,
           width: $(goldenball).width(),
           height: $(goldenball).height()
         };
 // WHAT TO DO IF P1 HITS GOLD DOT
-        if (isGoldCollideP1(a, gold)) {
+        if (isGoldCollideP1(p1Cube, goldDot)) {
           $('#p1Counter').html(function(i, val) {
             return +val+10;
           });
@@ -369,16 +369,16 @@ $(() => {
           if(!mute)audioGold.play();
         }
 // WHAT TO DO IF P2 HITS GOLD DOT
-        if (isGoldCollideP2(c, gold)) {
+        if (isGoldCollideP2(p2Cube, goldDot)) {
           $('#p2Counter').html(function(i, val) {
             return +val+10;
+
           });
           $(goldenball).remove();
           p2score.push('ball', 'ball2', 'ball3', 'ball4', 'ball5', 'ball6', 'ball7', 'ball8', 'ball9', 'ball10');
           if(!mute)audioGold.play();
         }
       });
-
 
 
 // MOVEMENT FUNCTIONS
