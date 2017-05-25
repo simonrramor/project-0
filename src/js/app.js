@@ -10,11 +10,10 @@ $(() => {
   const  x = 20 ;
   const p1score = [];
   const p2score = [];
-  const numOfGoodDots = 200;
+  const numOfGoodDots = 300;
   const numOfBadDots = 200;
-  const numOfBigDots = 30;
+  const numOfBigDots = 50;
   const numOfGoldDots = 2;
-  // const gameTime = 30000; // in miliseconds
   let mute = false;
   const audio = $('audio')[0];
   const audioBig = $('audio')[1];
@@ -62,6 +61,7 @@ $(() => {
   $('#mute-button').on('click', () => {
     mute = !mute;
   });
+
   //MUTE TOGGLE BUTTON STYLE ON AND OFF
   $('#mute-button').each(function() {
     $(this).data('original', $(this).html());
@@ -108,7 +108,7 @@ $(() => {
           'left': posx + 'px',
           'top': posy + 'px'
         });
-        $newdiv.appendTo('#gameBoard').clone().delay(2000).fadeIn(100);
+        $newdiv.appendTo('#gameBoard');
         count ++;
       }
     }
@@ -125,7 +125,7 @@ $(() => {
           'left': posx + 'px',
           'top': posy + 'px'
         });
-        $newBigdiv.appendTo('#gameBoard').clone().delay(2000).fadeIn(100);
+        $newBigdiv.appendTo('#gameBoard');
         count ++;
       }
     }
@@ -142,7 +142,7 @@ $(() => {
           'left': posx + 'px',
           'top': posy + 'px'
         });
-        $newBaddiv.appendTo('#gameBoard').clone().delay(2000).fadeIn(100);
+        $newBaddiv.appendTo('#gameBoard');
         count ++;
       }
     }
@@ -163,7 +163,7 @@ $(() => {
         });
 
 
-        $newGoldDiv.appendTo('#gameBoard').clone().delay(2000).fadeIn(100);
+        $newGoldDiv.appendTo('#gameBoard');
         count ++;
         if(!mute)goldenters.play();
 
